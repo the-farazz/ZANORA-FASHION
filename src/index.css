@@ -1,0 +1,53 @@
+@import "tailwindcss";
+
+@theme {
+  --color-zanora-cream: #F5F1EC;
+  --color-zanora-beige: #E8DFD6;
+  --color-zanora-brown: #8B6F5C;
+  --color-zanora-black: #111111;
+  
+  --font-outfit: "Outfit", sans-serif;
+  
+  --letter-spacing-widest-plus: 0.5em;
+  --letter-spacing-wider-plus: 0.2em;
+}
+
+@layer base {
+  body {
+    background-color: var(--color-zanora-cream);
+    color: var(--color-zanora-black);
+    font-family: var(--font-outfit);
+    font-weight: 300;
+    letter-spacing: 0.04em;
+    overflow-x: hidden;
+  }
+  
+    h1, h2, h3, h4 {
+    font-weight: 200;
+    text-transform: uppercase;
+    letter-spacing: var(--letter-spacing-wider-plus);
+  }
+
+  button {
+    transition: all 0.3s ease-in-out;
+  }
+}
+
+@layer components {
+  .nav-item-underline {
+    position: relative;
+  }
+  .nav-item-underline::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 0;
+    height: 1px;
+    background-color: #111111;
+    transition: all 0.3s ease-in-out;
+  }
+  .nav-item-underline:hover::after {
+    width: 100%;
+  }
+}
