@@ -3,6 +3,7 @@ export const products = [
     id: '1',
     slug: 'unstitched-luxe-chiffon-set-pakistan',
     name: 'Unstitched Luxe Chiffon Set',
+    category: '3-piece',
     price: 'Rs. 12,500',
     sku: 'ZN-101',
     availability: 'In Stock',
@@ -26,6 +27,7 @@ export const products = [
     id: '2',
     slug: 'minimalist-crepe-collection-pakistan',
     name: 'Minimalist Crepe Collection',
+    category: '2-piece',
     price: 'Rs. 8,900',
     sku: 'ZN-102',
     availability: 'In Stock',
@@ -49,6 +51,7 @@ export const products = [
     id: '3',
     slug: 'classic-silk-evening-wear-pakistan',
     name: 'Classic Silk Evening Wear',
+    category: '3-piece',
     price: 'Rs. 15,000',
     sku: 'ZN-103',
     availability: 'Limited Stock',
@@ -71,6 +74,7 @@ export const products = [
   {
     id: '4',
     slug: 'evening-drape-linen-pakistan',
+    category: '2-piece',
     name: 'Evening Drape Linen',
     price: 'Rs. 10,200',
     sku: 'ZN-104',
@@ -94,6 +98,7 @@ export const products = [
   {
     id: '5',
     slug: 'spring-lawn-collection-pakistan',
+    category: '3-piece',
     name: 'Spring Lawn Collection',
     price: 'Rs. 7,500',
     sku: 'ZN-105',
@@ -117,6 +122,7 @@ export const products = [
   {
     id: '6',
     slug: 'summer-breeze-voile-pakistan',
+    category: '1-piece',
     name: 'Summer Breeze Voile',
     price: 'Rs. 9,000',
     sku: 'ZN-106',
