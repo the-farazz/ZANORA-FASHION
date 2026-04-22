@@ -2,13 +2,25 @@ import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import { Search, ShoppingBag, Menu, X } from 'lucide-react';
 import { useDispatch, useSelector } from 'react-redux';
+import { motion, AnimatePresence } from 'framer-motion';
 import { toggleCart } from '../store/cartSlice';
+import NavigationDrawer from './NavigationDrawer';
+import { products } from '../data/products';
 
 const Navbar = () => {
   const [isScrolled, setIsScrolled] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+  const [isSearchOpen, setIsSearchOpen] = useState(false);
+  const [searchQuery, setSearchQuery] = useState('');
   const dispatch = useDispatch();
   const { items } = useSelector((state) => state.cart);
+
+  const filteredProducts = searchQuery.trim() === '' 
+    ? [] 
+    : products.filter(product => 
+        product.name.toLowerCase().includes(searchQuery.toLowerCase()) ||
+        product.description.toLowerCase().includes(searchQuery.toLowerCase())
+      );
 
   const cartItemCount = items.reduce((acc, item) => acc + item.quantity, 0);
 
@@ -27,19 +39,13 @@ const Navbar = () => {
       }`}
     >
       <div className="w-full px-6 md:px-20 flex justify-between items-center">
-        {/* Mobile Menu Toggle */}
+        {/* Sidebar menu toggle button (Visible on all screens) */}
         <button 
-          className="lg:hidden flex-1"
-          onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
+          className="flex flex-1 items-center"
+          onClick={() => setIsMobileMenuOpen(true)}
         >
-          {isMobileMenuOpen ? <X size={20} /> : <Menu size={20} />}
+          <Menu size={24} strokeWidth={1} className="hover:text-zanora-brown transition-colors cursor-pointer" />
         </button>
-
-        {/* Desktop Links (Left) */}
-        <div className="hidden lg:flex gap-8 flex-1">
-          <Link to="/category/collections" className="text-[13px] uppercase tracking-widest nav-item-underline">Collections</Link>
-          <Link to="/category/new-arrivals" className="text-[13px] uppercase tracking-widest nav-item-underline">New Arrivals</Link>
-        </div>
 
         {/* Logo (Center) */}
         <Link to="/" className="flex-[2] lg:flex-1 text-center text-xl md:text-2xl font-extralight tracking-[0.5em] uppercase">
@@ -48,7 +54,10 @@ const Navbar = () => {
 
         {/* Actions (Right) */}
         <div className="flex gap-6 items-center justify-end flex-1">
-          <button className="hidden sm:block">
+          <button 
+            className="hidden sm:block hover:opacity-70 transition-opacity"
+            onClick={() => setIsSearchOpen(true)}
+          >
             <Search size={20} strokeWidth={1} />
           </button>
           <button 
@@ -65,14 +74,96 @@ const Navbar = () => {
         </div>
       </div>
 
-      {/* Mobile Drawer */}
-      {isMobileMenuOpen && (
-        <div className="fixed top-20 left-0 w-full h-[calc(100vh-80px)] bg-zanora-cream z-[999] p-8 flex flex-col gap-6 animate-in slide-in-from-top duration-300">
-          <a href="#" className="text-[13px] uppercase tracking-widest" onClick={() => setIsMobileMenuOpen(false)}>Collections</a>
-          <a href="#" className="text-[13px] uppercase tracking-widest" onClick={() => setIsMobileMenuOpen(false)}>New Arrivals</a>
-          <a href="#" className="text-[13px] uppercase tracking-widest" onClick={() => setIsMobileMenuOpen(false)}>About Us</a>
-        </div>
-      )}
+      {/* Search Overlay */}
+      <AnimatePresence>
+        {isSearchOpen && (
+          <motion.div
+            initial={{ opacity: 0, y: -20 }}
+            animate={{ opacity: 1, y: 0 }}
+            exit={{ opacity: 0, y: -20 }}
+            className="fixed inset-0 bg-white z-[2000] p-10 flex flex-col items-center justify-start"
+          >
+            <div className="w-full flex justify-end mb-20">
+              <button 
+                onClick={() => setIsSearchOpen(false)}
+                className="p-2 hover:rotate-90 transition-transform duration-300"
+              >
+                <X size={32} strokeWidth={1} />
+              </button>
+            </div>
+
+            <div className="w-full max-w-6xl space-y-12">
+              <div className="space-y-6">
+                <h2 className="text-[12px] uppercase tracking-[0.5em] opacity-40 text-center font-bold">What are you looking for?</h2>
+                <div className="relative group max-w-4xl mx-auto">
+                  <input 
+                    type="text" 
+                    autoFocus
+                    value={searchQuery}
+                    onChange={(e) => setSearchQuery(e.target.value)}
+                    placeholder="SEARCH PRODUCTS..."
+                    className="w-full bg-transparent border-b border-black/10 py-6 text-2xl md:text-4xl font-extralight tracking-widest focus:outline-none focus:border-zanora-brown transition-colors uppercase placeholder:text-gray-200"
+                  />
+                  <button className="absolute right-0 top-1/2 -translate-y-1/2 p-2">
+                    <Search size={32} strokeWidth={1} className="opacity-20 group-focus-within:opacity-100 transition-opacity" />
+                  </button>
+                </div>
+              </div>
+              
+              {/* Search Results */}
+              <div className="mt-12 overflow-y-auto max-h-[60vh] custom-scrollbar pb-10">
+                {searchQuery.trim() !== '' && (
+                  <div className="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-5 gap-8">
+                    {filteredProducts.map(product => (
+                      <Link 
+                        key={product.id} 
+                        to={`/product/${product.id}`}
+                        onClick={() => {
+                          setIsSearchOpen(false);
+                          setSearchQuery('');
+                        }}
+                        className="group flex flex-col gap-3 animate-in fade-in slide-in-from-bottom-4 duration-500"
+                      >
+                        <div className="aspect-[3/4] overflow-hidden bg-zanora-cream relative">
+                          <img 
+                            src={product.images[0]} 
+                            alt={product.name}
+                            className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700" 
+                          />
+                        </div>
+                        <div className="space-y-1 text-center">
+                          <h3 className="text-[10px] uppercase tracking-widest font-bold truncate">{product.name}</h3>
+                          <p className="text-[10px] opacity-40 font-bold">{product.price}</p>
+                        </div>
+                      </Link>
+                    ))}
+                  </div>
+                )}
+
+                {searchQuery.trim() !== '' && filteredProducts.length === 0 && (
+                  <div className="py-20 text-center opacity-30 italic font-light tracking-widest">
+                    No results found for "{searchQuery}"
+                  </div>
+                )}
+
+                {searchQuery.trim() === '' && (
+                  <div className="flex flex-wrap gap-6 justify-center pt-8">
+                    <span className="text-[10px] uppercase tracking-widest opacity-30">Popular:</span>
+                    <button onClick={() => setSearchQuery('Lawn')} className="text-[10px] uppercase tracking-widest font-bold hover:text-zanora-brown transition-colors">Lawn '26</button>
+                    <button onClick={() => setSearchQuery('Unstitched')} className="text-[10px] uppercase tracking-widest font-bold hover:text-zanora-brown transition-colors">Unstitched</button>
+                    <button onClick={() => setSearchQuery('Silk')} className="text-[10px] uppercase tracking-widest font-bold hover:text-zanora-brown transition-colors">Silks</button>
+                  </div>
+                )}
+              </div>
+            </div>
+          </motion.div>
+        )}
+      </AnimatePresence>
+
+      <NavigationDrawer 
+        isOpen={isMobileMenuOpen} 
+        onClose={() => setIsMobileMenuOpen(false)} 
+      />
     </nav>
   );
 };

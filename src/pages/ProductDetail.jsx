@@ -1,10 +1,13 @@
-import React, { useState, useRef } from 'react';
+import React, { useState, useRef, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { Minus, Plus, Heart, Facebook, Twitter, Phone, X } from 'lucide-react';
 import { useDispatch } from 'react-redux';
+import { useParams, Link } from 'react-router-dom';
 import { addItem, toggleCart } from '../store/cartSlice';
+import { products } from '../data/products';
 
 const ProductDetail = () => {
+  const { id } = useParams();
   const [selectedImage, setSelectedImage] = useState(0);
   const [selectedSize, setSelectedSize] = useState(null);
   const [quantity, setQuantity] = useState(1);
@@ -13,29 +16,23 @@ const ProductDetail = () => {
   const containerRef = useRef(null);
   const dispatch = useDispatch();
 
-  const lensSize = 150; 
+  const product = products.find(p => p.id === id);
 
-  const product = {
-    id: 'luxe-chiffon-3p',
-    name: 'Unstitched Printed Lawn 2 Piece (Shirt/Trouser)',
-    price: 'Rs. 12,500',
-    sku: '148352',
-    availability: 'In Stock',
-    description: 'A masterpiece of elegance and modern craftsmanship. This 2-piece set features a premium printed lawn shirt and cambric trousers.',
-    details: {
-      design: 'U07-25708-07A (ST)',
-      color: 'Ivory / White',
-      fabric: 'Lawn',
-      shirt: 'Premium Printed Lawn Shirt (Wider Width) 1.75M',
-      trouser: 'Premium Printed Cambric Trouser 1.8M'
-    },
-    sizes: ['S', 'M', 'L'],
-    images: [
-      '/assets/D1 (01).jpg',
-      '/assets/D1 (02).jpg',
-      '/assets/D1 (03).jpg',
-    ]
-  };
+  useEffect(() => {
+    window.scrollTo(0, 0);
+    setSelectedImage(0);
+  }, [id]);
+
+  if (!product) {
+    return (
+      <div className="pt-40 pb-20 px-6 text-center min-h-screen bg-zanora-cream">
+        <h2 className="text-xl tracking-widest-plus uppercase mb-4">Product Not Found</h2>
+        <Link to="/" className="text-sm underline tracking-widest opacity-60">Return to Home</Link>
+      </div>
+    );
+  }
+
+  const lensSize = 150; 
 
   const handleMouseMove = (e) => {
     if (!containerRef.current) return;
@@ -173,7 +170,7 @@ const ProductDetail = () => {
             <div className="space-y-2">
               <h4 className="text-[12px] uppercase tracking-widest font-bold">Product Detail</h4>
               <p className="text-[13px] font-light leading-relaxed opacity-70">
-                SAYA's {product.description}
+                ZANORA's {product.description}
               </p>
             </div>
 

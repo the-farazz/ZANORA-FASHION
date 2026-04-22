@@ -1,12 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-
-const products = [
-  { id: 1, name: 'Luxe Chiffon Set', price: '12,500', image: '/assets/D5 (01).jpg' },
-  { id: 2, name: 'Minimalist Crepe', price: '8,900', image: '/assets/D6 (1).jpg' },
-  { id: 3, name: 'Classic Silk', price: '15,000', image: '/assets/D1 (02).jpg' },
-  { id: 4, name: 'Evening Drape', price: '10,200', image: '/assets/D2 (1).jpg' },
-];
+import { products } from '../data/products';
 
 const FeaturedProducts = () => {
   return (
@@ -24,7 +18,7 @@ const FeaturedProducts = () => {
           <Link to={`/product/${product.id}`} key={product.id} className="group cursor-pointer">
             <div className="aspect-[3/4] overflow-hidden mb-4 relative">
               <img 
-                src={product.image} 
+                src={product.images[0]} 
                 alt={product.name}
                 className="w-full h-full object-cover transition-transform duration-700 ease-out group-hover:scale-105"
               />
@@ -33,7 +27,7 @@ const FeaturedProducts = () => {
               </div>
             </div>
             <h4 className="text-[13px] tracking-widest uppercase mb-1">{product.name}</h4>
-            <p className="text-[14px] text-zanora-brown font-light">Rs. {product.price}</p>
+            <p className="text-[14px] text-zanora-brown font-light">{product.price}</p>
           </Link>
         ))}
       </div>

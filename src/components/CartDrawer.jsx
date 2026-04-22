@@ -1,11 +1,13 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { X, Minus, Plus, ShoppingBag, ArrowRight } from 'lucide-react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { toggleCart, removeItem, updateQuantity } from '../store/cartSlice';
+import CheckoutModal from './CheckoutModal';
 
 const CartDrawer = () => {
   const { items, isOpen } = useSelector((state) => state.cart);
+  const [isCheckoutModalOpen, setIsCheckoutModalOpen] = useState(false);
   const dispatch = useDispatch();
 
   const subtotal = items.reduce((acc, item) => {
@@ -17,8 +19,13 @@ const CartDrawer = () => {
 
   const handleWhatsAppCheckout = () => {
     if (items.length === 0) return;
+    setIsCheckoutModalOpen(true);
+  };
 
+  const handleFinalCheckout = (customerData) => {
     let message = "Hi ZANORA, I want to place an order:\n\n";
+    
+    // Order Summary
     items.forEach((item, index) => {
       message += `${index + 1}. *${item.name}*\n`;
       message += `   Size: ${item.size}\n`;
@@ -29,13 +36,24 @@ const CartDrawer = () => {
     message += `--------------------------\n`;
     message += `*ORDER TOTAL: ${formatPrice(subtotal)}*\n`;
     message += `--------------------------\n\n`;
-    message += "Please confirm the availability. Sharing my shipping details below...";
+
+    // Customer Details
+    message += `*SHIPPING DETAILS:*\n`;
+    message += `Name: ${customerData.name}\n`;
+    message += `Phone: ${customerData.phone}\n`;
+    if (customerData.email) message += `Email: ${customerData.email}\n`;
+    message += `Address: ${customerData.address}\n\n`;
+    
+    message += "Please confirm the availability. Thank you!";
 
     const encodedMessage = encodeURIComponent(message);
     window.open(`https://wa.me/923112264613?text=${encodedMessage}`, '_blank');
+    setIsCheckoutModalOpen(false);
+    dispatch(toggleCart());
   };
 
   return (
+    <>
     <AnimatePresence>
       {isOpen && (
         <>
@@ -145,6 +163,14 @@ const CartDrawer = () => {
         </>
       )}
     </AnimatePresence>
+    <CheckoutModal 
+      isOpen={isCheckoutModalOpen}
+      onClose={() => setIsCheckoutModalOpen(false)}
+      onConfirm={handleFinalCheckout}
+      subtotal={formatPrice(subtotal)}
+      items={items}
+    />
+    </>
   );
 };
 
