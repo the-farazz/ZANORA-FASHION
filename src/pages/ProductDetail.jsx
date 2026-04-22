@@ -1,6 +1,6 @@
 import React, { useState, useRef, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { Minus, Plus, Heart, Facebook, Twitter, Phone, X } from 'lucide-react';
+import { Minus, Plus, Heart, Facebook, Twitter, Phone, X, ChevronLeft, ChevronRight, Maximize2 } from 'lucide-react';
 import { useDispatch } from 'react-redux';
 import { useParams, Link } from 'react-router-dom';
 import { addItem, toggleCart } from '../store/cartSlice';
@@ -13,6 +13,7 @@ const ProductDetail = () => {
   const [quantity, setQuantity] = useState(1);
   const [zoomLevel, setZoomLevel] = useState({ x: 0, y: 0, show: false });
   const [isSizeGuideOpen, setIsSizeGuideOpen] = useState(false);
+  const [isFullZoomOpen, setIsFullZoomOpen] = useState(false);
   const containerRef = useRef(null);
   const dispatch = useDispatch();
 
@@ -60,6 +61,14 @@ const ProductDetail = () => {
     setZoomLevel(prev => ({ ...prev, show: false }));
   };
 
+  const handleNextImage = () => {
+    setSelectedImage((prev) => (prev + 1) % product.images.length);
+  };
+
+  const handlePrevImage = () => {
+    setSelectedImage((prev) => (prev - 1 + product.images.length) % product.images.length);
+  };
+
   const handleAddToCart = () => {
     if (!selectedSize) {
       alert('Please select a size first');
@@ -74,16 +83,16 @@ const ProductDetail = () => {
       <div className="max-w-[1440px] mx-auto flex flex-col lg:flex-row gap-12 relative">
         
         {/* LEFT: GALLERY & ZOOM AREA */}
-        <div className="flex gap-4 w-full lg:w-3/5 relative">
+        <div className="flex flex-col md:flex-row gap-4 w-full lg:w-3/5 relative">
           
-          {/* Thumbnails */}
-          <div className="hidden sm:flex flex-col gap-3 w-20 flex-shrink-0">
+          {/* Thumbnails (Vertical on desktop, Horizontal on mobile) */}
+          <div className="flex md:flex-col gap-3 w-full md:w-20 overflow-x-auto md:overflow-y-auto no-scrollbar py-2 md:py-0 order-2 md:order-1">
             {product.images.map((img, idx) => (
               <button 
                 key={idx}
                 onClick={() => setSelectedImage(idx)}
-                className={`w-20 h-24 overflow-hidden border transition-all ${
-                  selectedImage === idx ? 'border-zanora-black' : 'border-transparent opacity-60'
+                className={`w-20 md:w-full aspect-[3/4] flex-shrink-0 overflow-hidden border transition-all ${
+                  selectedImage === idx ? 'border-zanora-black' : 'border-transparent opacity-60 hover:opacity-100'
                 }`}
               >
                 <img src={img} alt="Thumbnail" className="w-full h-full object-cover" />
@@ -92,11 +101,16 @@ const ProductDetail = () => {
           </div>
 
           {/* Main Image Viewport */}
-          <div className="flex-1 relative">
+          <div className="flex-1 relative order-1 md:order-2">
             <div 
               ref={containerRef}
-              onPointerMove={handleMouseMove}
-              onPointerLeave={handleMouseLeave}
+              onMouseMove={handleMouseMove}
+              onTouchMove={(e) => {
+                const touch = e.touches[0];
+                handleMouseMove({ clientX: touch.clientX, clientY: touch.clientY });
+              }}
+              onMouseLeave={handleMouseLeave}
+              onTouchEnd={handleMouseLeave}
               className="aspect-[3/4] relative overflow-hidden bg-white cursor-crosshair border border-black/5"
             >
               <AnimatePresence mode="wait">
@@ -111,6 +125,28 @@ const ProductDetail = () => {
                 />
               </AnimatePresence>
               
+              {/* Navigation Arrows */}
+              <button 
+                onClick={(e) => { e.stopPropagation(); handlePrevImage(); }}
+                className="absolute left-4 top-1/2 -translate-y-1/2 w-10 h-10 rounded-full bg-white/80 flex items-center justify-center shadow-lg hover:bg-white transition-colors z-20"
+              >
+                <ChevronLeft size={20} strokeWidth={1} />
+              </button>
+              <button 
+                onClick={(e) => { e.stopPropagation(); handleNextImage(); }}
+                className="absolute right-4 top-1/2 -translate-y-1/2 w-10 h-10 rounded-full bg-white/80 flex items-center justify-center shadow-lg hover:bg-white transition-colors z-20"
+              >
+                <ChevronRight size={20} strokeWidth={1} />
+              </button>
+
+              {/* Expand Icon */}
+              <button 
+                onClick={() => setIsFullZoomOpen(true)}
+                className="absolute bottom-4 right-4 w-10 h-10 rounded-full bg-white flex items-center justify-center shadow-lg z-20"
+              >
+                <Maximize2 size={18} strokeWidth={1} />
+              </button>
+              
               {/* Zoom Lens (The moving box) */}
               {zoomLevel.show && (
                 <div 
@@ -120,19 +156,19 @@ const ProductDetail = () => {
                     left: `${zoomLevel.x}px`,
                     top: `${zoomLevel.y}px`,
                   }}
-                  className="absolute border border-black/20 bg-white/20 pointer-events-none z-50 backdrop-blur-[1px]"
+                  className="absolute border border-black/20 bg-white/10 pointer-events-none z-50 backdrop-blur-[1px]"
                 />
               )}
             </div>
 
-            {/* HIGH-FIDELITY ZOOM PREVIEW (Appears over the Right Column) */}
+            {/* HIGH-FIDELITY ZOOM PREVIEW (Desktop only side-by-side) */}
             <AnimatePresence>
               {zoomLevel.show && (
                 <motion.div 
                   initial={{ opacity: 0 }}
                   animate={{ opacity: 1 }}
                   exit={{ opacity: 0 }}
-                  className="absolute left-[calc(100%+3rem)] top-0 w-full h-full bg-zanora-cream z-[1000] border border-black/10 hidden lg:block pointer-events-none shadow-2xl overflow-hidden"
+                  className="absolute left-0 lg:left-[calc(100%+3rem)] top-0 w-full h-full bg-zanora-cream z-[1000] border border-black/10 pointer-events-none shadow-2xl overflow-hidden hidden lg:block"
                 >
                   <img
                     src={product.images[selectedImage]}
@@ -314,6 +350,35 @@ const ProductDetail = () => {
               </div>
             </motion.div>
           </div>
+        )}
+      </AnimatePresence>
+
+      {/* FULL SCREEN ZOOM MODAL */}
+      <AnimatePresence>
+        {isFullZoomOpen && (
+          <motion.div 
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            className="fixed inset-0 z-[5000] bg-white flex flex-col"
+          >
+            <div className="p-4 flex justify-end bg-white border-b border-black/5">
+              <button 
+                onClick={() => setIsFullZoomOpen(false)}
+                className="p-2 flex items-center gap-2 uppercase text-[11px] tracking-widest font-bold"
+              >
+                Close <X size={20} strokeWidth={1} />
+              </button>
+            </div>
+            <div className="flex-1 overflow-auto bg-white p-4 flex items-center justify-center">
+              <img 
+                src={product.images[selectedImage]} 
+                alt="Full View" 
+                className="max-w-[400%] md:max-w-none cursor-zoom-out h-auto w-full object-contain"
+                onClick={() => setIsFullZoomOpen(false)}
+              />
+            </div>
+          </motion.div>
         )}
       </AnimatePresence>
     </div>
