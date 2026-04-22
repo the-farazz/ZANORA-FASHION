@@ -14,6 +14,18 @@ export const metadata = {
   keywords: ['ZANORA', 'Pakistani Fashion', 'Luxury Lawn', 'Unstitched Collection', 'Ready to Wear', 'Designer Suits'],
   authors: [{ name: 'ZANORA' }],
   metadataBase: new URL('https://www.zanorafashion.com'),
+  robots: {
+    index: true,
+    follow: true,
+    nocache: true,
+    googleBot: {
+      index: true,
+      follow: true,
+      'max-video-preview': -1,
+      'max-image-preview': 'large',
+      'max-snippet': -1,
+    },
+  },
   verification: {
     google: 'your-google-verification-code', // Placeholder for User to fill
   },

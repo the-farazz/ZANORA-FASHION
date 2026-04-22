@@ -8,6 +8,9 @@ import Reviews from '../components/Reviews';
 export const metadata = {
   title: 'Premium Pakistani Fashion & Luxury Unstitched Collections',
   description: 'Shop ZANORA for the finest ladies dresses in Pakistan. Discover our luxury unstitched lawn, festive chiffon, and ready-to-wear collections with worldwide shipping.',
+  alternates: {
+    canonical: '/',
+  },
 };
 
 export default function HomePage() {

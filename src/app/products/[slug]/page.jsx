@@ -11,6 +11,9 @@ export async function generateMetadata({ params }) {
   return {
     title: `${product.name} | Premium Pakistani Fashion`,
     description: `Shop ${product.name} for women in Pakistan at ZANORA. ${product.description.substring(0, 120)}...`,
+    alternates: {
+      canonical: `/products/${product.slug}`,
+    },
     openGraph: {
       images: [{ url: product.images[0] }],
     },
@@ -36,21 +39,28 @@ export default function ProductPage({ params }) {
     '@context': 'https://schema.org',
     '@type': 'Product',
     name: product.name,
-    image: product.images[0],
+    image: `https://www.zanorafashion.com${product.images[0]}`,
     description: product.description,
+    sku: product.sku,
+    mpn: product.sku,
     brand: {
       '@type': 'Brand',
       name: 'Zanora',
     },
-    sku: product.sku,
     offers: {
       '@type': 'Offer',
-      price: numericPrice,
+      url: `https://www.zanorafashion.com/products/${product.slug}`,
       priceCurrency: 'PKR',
+      price: numericPrice,
+      priceValidUntil: '2027-12-31',
+      itemCondition: 'https://schema.org/NewCondition',
       availability: product.availability === 'In Stock' 
         ? 'https://schema.org/InStock' 
         : 'https://schema.org/OutOfStock',
-      url: `https://www.zanorafashion.com/products/${product.slug}`,
+      seller: {
+        '@type': 'Organization',
+        name: 'Zanora Fashion',
+      },
     },
   };
 

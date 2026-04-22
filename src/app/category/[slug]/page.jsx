@@ -24,6 +24,9 @@ export async function generateMetadata({ params }) {
   return {
     title: `${content.title} | ZANORA`,
     description: `Buy the best ${content.title} online in Pakistan. Explore our premium collection at ZANORA. ${content.description.substring(0, 100)}...`,
+    alternates: {
+      canonical: `/category/${slug}`,
+    },
   };
 }
 
