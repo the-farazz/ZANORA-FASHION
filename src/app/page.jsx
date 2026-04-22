@@ -6,8 +6,8 @@ import SEOContent from '../components/SEOContent';
 import Reviews from '../components/Reviews';
 
 export const metadata = {
-  title: 'Home',
-  description: 'Experience the minimal aesthetic of ZANORA. Shop our latest luxury lawn, festive, and ready-to-wear collections with worldwide shipping.',
+  title: 'Premium Pakistani Fashion & Luxury Unstitched Collections',
+  description: 'Shop ZANORA for the finest ladies dresses in Pakistan. Discover our luxury unstitched lawn, festive chiffon, and ready-to-wear collections with worldwide shipping.',
 };
 
 export default function HomePage() {

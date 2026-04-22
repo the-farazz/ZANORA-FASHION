@@ -21,8 +21,8 @@ export async function generateMetadata({ params }) {
   const { slug } = params;
   const content = categoryContent[slug] || { title: 'Collections' };
   return {
-    title: content.title,
-    description: content.description,
+    title: `${content.title} | ZANORA`,
+    description: `Buy the best ${content.title} online in Pakistan. Explore our premium collection at ZANORA. ${content.description.substring(0, 100)}...`,
   };
 }
 

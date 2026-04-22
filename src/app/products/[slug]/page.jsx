@@ -9,8 +9,8 @@ export async function generateMetadata({ params }) {
   if (!product) return { title: 'Product Not Found' };
 
   return {
-    title: product.name,
-    description: product.description,
+    title: `${product.name} | Premium Pakistani Fashion`,
+    description: `Shop ${product.name} for women in Pakistan at ZANORA. ${product.description.substring(0, 120)}...`,
     openGraph: {
       images: [{ url: product.images[0] }],
     },
