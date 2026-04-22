@@ -31,5 +31,36 @@ export default function ProductPage({ params }) {
     notFound();
   }
 
-  return <ProductClient product={product} />;
+  const numericPrice = product.price.replace(/[^\d]/g, '');
+  const jsonLd = {
+    '@context': 'https://schema.org',
+    '@type': 'Product',
+    name: product.name,
+    image: product.images[0],
+    description: product.description,
+    brand: {
+      '@type': 'Brand',
+      name: 'Zanora',
+    },
+    sku: product.sku,
+    offers: {
+      '@type': 'Offer',
+      price: numericPrice,
+      priceCurrency: 'PKR',
+      availability: product.availability === 'In Stock' 
+        ? 'https://schema.org/InStock' 
+        : 'https://schema.org/OutOfStock',
+      url: `https://www.zanorafashion.com/products/${product.slug}`,
+    },
+  };
+
+  return (
+    <>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+      />
+      <ProductClient product={product} />
+    </>
+  );
 }
