@@ -1,6 +1,6 @@
 import React, { useState, useRef, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { Minus, Plus, Heart, Facebook, Twitter, Phone, X, ChevronLeft, ChevronRight, Maximize2 } from 'lucide-react';
+import { Minus, Plus, Heart, Facebook, Instagram, Phone, X, ChevronLeft, ChevronRight, Maximize2 } from 'lucide-react';
 import { useDispatch } from 'react-redux';
 import { useParams, Link } from 'react-router-dom';
 import { addItem, toggleCart } from '../store/cartSlice';
@@ -303,8 +303,12 @@ const ProductDetail = () => {
 
           <div className="pt-6 border-t border-black/5 flex items-center justify-between">
             <div className="flex gap-4">
-              <Facebook size={16} strokeWidth={1.5} className="cursor-pointer opacity-60 hover:opacity-100" />
-              <Twitter size={16} strokeWidth={1.5} className="cursor-pointer opacity-60 hover:opacity-100" />
+              <a href="https://www.facebook.com/profile.php?id=61567419680748" target="_blank" rel="noopener noreferrer">
+                <Facebook size={16} strokeWidth={1.5} className="cursor-pointer opacity-60 hover:opacity-100 transition-opacity" />
+              </a>
+              <a href="https://www.instagram.com/zanora.fashion.official/" target="_blank" rel="noopener noreferrer">
+                <Instagram size={16} strokeWidth={1.5} className="cursor-pointer opacity-60 hover:opacity-100 transition-opacity" />
+              </a>
               <Phone size={16} strokeWidth={1.5} className="cursor-pointer opacity-60 hover:opacity-100" />
             </div>
             <p className="text-[11px] uppercase tracking-widest opacity-40 italic">

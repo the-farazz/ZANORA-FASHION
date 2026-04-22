@@ -46,8 +46,8 @@ const Footer = () => {
       <div className="flex flex-col md:flex-row justify-between items-center mt-20 pt-8 border-t border-black/5 gap-4">
         <p className="text-[11px] font-light opacity-40">© 2026 ZANORA. All rights reserved.</p>
         <div className="flex gap-6">
-          <a href="#" className="text-[11px] uppercase tracking-widest opacity-40 hover:opacity-80">Instagram</a>
-          <a href="#" className="text-[11px] uppercase tracking-widest opacity-40 hover:opacity-80">Facebook</a>
+          <a href="https://www.instagram.com/zanora.fashion.official/" target="_blank" rel="noopener noreferrer" className="text-[11px] uppercase tracking-widest opacity-40 hover:opacity-80 transition-opacity">Instagram</a>
+          <a href="https://www.facebook.com/profile.php?id=61567419680748" target="_blank" rel="noopener noreferrer" className="text-[11px] uppercase tracking-widest opacity-40 hover:opacity-80 transition-opacity">Facebook</a>
         </div>
       </div>
     </footer>

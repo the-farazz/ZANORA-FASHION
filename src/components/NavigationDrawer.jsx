@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { X, User, Phone, Store, Plus, Truck, HelpCircle, AlertCircle } from 'lucide-react';
+import { X, User, Phone, Store, Plus, Truck, HelpCircle, AlertCircle, Instagram, Facebook } from 'lucide-react';
 
 const NavigationDrawer = ({ isOpen, onClose }) => {
   const [activeTab, setActiveTab] = useState('WOMEN');
@@ -168,11 +168,20 @@ const NavigationDrawer = ({ isOpen, onClose }) => {
                 </div>
                 <span className="text-[10px] uppercase tracking-widest opacity-60 group-hover:opacity-100 font-bold transition-opacity">Track Your Order</span>
               </div>
-              <div className="flex items-center gap-4 group cursor-pointer">
+              <div className="flex items-center gap-4 group cursor-pointer pb-2">
                 <div className="w-8 h-8 rounded-full bg-zanora-brown/10 flex items-center justify-center group-hover:bg-zanora-brown group-hover:text-white transition-colors">
                   <HelpCircle size={14} strokeWidth={1} />
                 </div>
                 <span className="text-[10px] uppercase tracking-widest opacity-60 group-hover:opacity-100 font-bold transition-opacity">Help & Support</span>
+              </div>
+              
+              <div className="flex gap-4 pt-4 border-t border-black/5 items-center justify-center">
+                <a href="https://www.facebook.com/profile.php?id=61567419680748" target="_blank" rel="noopener noreferrer" className="opacity-40 hover:opacity-100 transition-opacity">
+                  <Facebook size={18} strokeWidth={1} />
+                </a>
+                <a href="https://www.instagram.com/zanora.fashion.official/" target="_blank" rel="noopener noreferrer" className="opacity-40 hover:opacity-100 transition-opacity">
+                  <Instagram size={18} strokeWidth={1} />
+                </a>
               </div>
             </div>
           </motion.div>
