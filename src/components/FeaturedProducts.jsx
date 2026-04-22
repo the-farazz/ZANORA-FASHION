@@ -19,8 +19,8 @@ const FeaturedProducts = () => {
             <div className="aspect-[3/4] overflow-hidden mb-4 relative">
               <img 
                 src={product.images[0]} 
-                alt={product.name}
-                className="w-full h-full object-cover transition-transform duration-700 ease-out group-hover:scale-105"
+                alt={`${product.name} for women in Pakistan`}
+                className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
               />
               <div className="absolute top-4 right-4 bg-white/80 py-1 px-3 text-[10px] tracking-widest uppercase backdrop-blur-sm">
                 New

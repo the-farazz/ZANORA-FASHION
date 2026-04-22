@@ -92,7 +92,7 @@ const ProductClient = ({ product }) => {
                   selectedImage === idx ? 'border-zanora-black' : 'border-transparent opacity-60 hover:opacity-100'
                 }`}
               >
-                <img src={img} alt="Thumbnail" className="w-full h-full object-cover" />
+                <img src={img} alt={`${product.name} View ${idx + 1} for women in Pakistan`} className="w-full h-full object-cover" />
               </button>
             ))}
           </div>
@@ -118,6 +118,7 @@ const ProductClient = ({ product }) => {
                   animate={{ opacity: 1 }}
                   exit={{ opacity: 0 }}
                   transition={{ duration: 0.3 }}
+                  alt={`${product.name} for women in Pakistan`}
                   className="w-full h-full object-cover pointer-events-none"
                 />
               </AnimatePresence>

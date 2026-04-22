@@ -17,10 +17,10 @@ export const products = [
     },
     sizes: ['S', 'M', 'L'],
     images: [
-      '/assets/D5 (01).jpg',
-      '/assets/D5 (02).jpg',
-      '/assets/D5 (03).jpg',
-      '/assets/D5 (04).jpg',
+      '/assets/unstitched-luxe-chiffon-set-pakistan-1.jpg',
+      '/assets/unstitched-luxe-chiffon-set-pakistan-2.jpg',
+      '/assets/unstitched-luxe-chiffon-set-pakistan-3.jpg',
+      '/assets/unstitched-luxe-chiffon-set-pakistan-4.jpg',
     ]
   },
   {
@@ -41,10 +41,10 @@ export const products = [
     },
     sizes: ['S', 'M', 'L'],
     images: [
-      '/assets/D6 (1).jpg',
-      '/assets/D6 (2).jpg',
-      '/assets/D6 (03).jpg',
-      '/assets/D6 (4).jpg',
+      '/assets/minimalist-crepe-collection-pakistan-1.jpg',
+      '/assets/minimalist-crepe-collection-pakistan-2.jpg',
+      '/assets/minimalist-crepe-collection-pakistan-3.jpg',
+      '/assets/minimalist-crepe-collection-pakistan-4.jpg',
     ]
   },
   {
@@ -65,10 +65,10 @@ export const products = [
     },
     sizes: ['S', 'M', 'L'],
     images: [
-      '/assets/D1 (05).jpg',
-      '/assets/D1 (01).jpg',
-      '/assets/D1 (02).jpg',
-      '/assets/D1 (03).jpg',
+      '/assets/classic-silk-evening-wear-pakistan-1.jpg',
+      '/assets/classic-silk-evening-wear-pakistan-2.jpg',
+      '/assets/classic-silk-evening-wear-pakistan-3.jpg',
+      '/assets/classic-silk-evening-wear-pakistan-4.jpg',
     ]
   },
   {
@@ -89,10 +89,10 @@ export const products = [
     },
     sizes: ['S', 'M', 'L'],
     images: [
-      '/assets/D2 (2).jpg',
-      '/assets/D2 (3).jpg',
-      '/assets/D2 (4).jpg',
-      '/assets/D2 (05).jpg',
+      '/assets/evening-drape-linen-pakistan-1.jpg',
+      '/assets/evening-drape-linen-pakistan-2.jpg',
+      '/assets/evening-drape-linen-pakistan-3.jpg',
+      '/assets/evening-drape-linen-pakistan-4.jpg',
     ]
   },
   {
@@ -113,10 +113,10 @@ export const products = [
     },
     sizes: ['S', 'M', 'L'],
     images: [
-      '/assets/D3 (01).jpg',
-      '/assets/D3 (02).jpg',
-      '/assets/D3 (03).jpg',
-      '/assets/D3 (04).jpg',
+      '/assets/spring-lawn-collection-pakistan-1.jpg',
+      '/assets/spring-lawn-collection-pakistan-2.jpg',
+      '/assets/spring-lawn-collection-pakistan-3.jpg',
+      '/assets/spring-lawn-collection-pakistan-4.jpg',
     ]
   },
   {
@@ -137,10 +137,10 @@ export const products = [
     },
     sizes: ['S', 'M', 'L'],
     images: [
-      '/assets/D4 (01).jpg',
-      '/assets/D4 (02).jpg',
-      '/assets/D4 (03).jpg',
-      '/assets/D4 (04).jpg',
+      '/assets/summer-breeze-voile-pakistan-1.jpg',
+      '/assets/summer-breeze-voile-pakistan-2.jpg',
+      '/assets/summer-breeze-voile-pakistan-3.jpg',
+      '/assets/summer-breeze-voile-pakistan-4.jpg',
     ]
   },
 ];

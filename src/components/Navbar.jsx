@@ -128,7 +128,7 @@ const Navbar = () => {
                         <div className="aspect-[3/4] overflow-hidden bg-zanora-cream relative">
                           <img 
                             src={product.images[0]} 
-                            alt={product.name}
+                            alt={`${product.name} for women in Pakistan`}
                             className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700" 
                           />
                         </div>
