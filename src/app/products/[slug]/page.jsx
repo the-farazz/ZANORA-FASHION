@@ -3,8 +3,8 @@ import ProductClient from './ProductClient';
 import { notFound } from 'next/navigation';
 
 export async function generateMetadata({ params }) {
-  const { id } = params;
-  const product = products.find((p) => p.id === parseInt(id));
+  const { slug } = params;
+  const product = products.find((p) => p.slug === slug);
 
   if (!product) return { title: 'Product Not Found' };
 
@@ -19,13 +19,13 @@ export async function generateMetadata({ params }) {
 
 export async function generateStaticParams() {
   return products.map((product) => ({
-    id: product.id.toString(),
+    slug: product.slug,
   }));
 }
 
 export default function ProductPage({ params }) {
-  const { id } = params;
-  const product = products.find((p) => p.id === parseInt(id));
+  const { slug } = params;
+  const product = products.find((p) => p.slug === slug);
 
   if (!product) {
     notFound();

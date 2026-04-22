@@ -118,7 +118,7 @@ const Navbar = () => {
                     {filteredProducts.map(product => (
                       <Link 
                         key={product.id} 
-                        href={`/product/${product.id}`}
+                        href={`/products/${product.slug}`}
                         onClick={() => {
                           setIsSearchOpen(false);
                           setSearchQuery('');

@@ -15,7 +15,7 @@ const FeaturedProducts = () => {
 
       <div className="grid grid-cols-2 lg:grid-cols-4 gap-6 md:gap-10">
         {products.map((product) => (
-          <Link href={`/product/${product.id}`} key={product.id} className="group cursor-pointer">
+          <Link href={`/products/${product.slug}`} key={product.id} className="group cursor-pointer">
             <div className="aspect-[3/4] overflow-hidden mb-4 relative">
               <img 
                 src={product.images[0]} 
