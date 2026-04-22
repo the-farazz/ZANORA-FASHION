@@ -2,4 +2,4 @@ User-agent: *
 Allow: /
 
 # Sitemaps
-Sitemap: https://zanora.fashion/sitemap.xml
+Sitemap: https://www.zanorafashion.com/sitemap.xml

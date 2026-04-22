@@ -4,7 +4,7 @@ import { Helmet } from 'react-helmet-async';
 const SEO = ({ title, description, keywords, image, url }) => {
   const siteTitle = "ZANORA";
   const fullTitle = `${title} | ${siteTitle}`;
-  const siteUrl = "https://zanora.fashion";
+  const siteUrl = "https://www.zanorafashion.com";
   const defaultDescription = "Premium Pakistani Fashion & Luxury Unstitched Collections. Effortless style for the modern woman.";
   const ogImage = image || "/assets/og-image.jpg";
 

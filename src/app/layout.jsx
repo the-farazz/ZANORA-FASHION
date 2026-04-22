@@ -13,10 +13,10 @@ export const metadata = {
   description: "Discover ZANORA's luxury unstitched and ready-to-wear collections. Shop the finest Pakistani lawn, silk, and festive wear with effortless style and curated elegance.",
   keywords: ['ZANORA', 'Pakistani Fashion', 'Luxury Lawn', 'Unstitched Collection', 'Ready to Wear', 'Designer Suits'],
   authors: [{ name: 'ZANORA' }],
-  metadataBase: new URL('https://zanora.fashion'),
+  metadataBase: new URL('https://www.zanorafashion.com'),
   openGraph: {
     type: 'website',
-    url: 'https://zanora.fashion/',
+    url: 'https://www.zanorafashion.com/',
     title: 'ZANORA | Premium Pakistani Fashion',
     description: 'Effortless style for the modern woman. Shop our latest luxury collections.',
     siteName: 'ZANORA',
