@@ -1,4 +1,5 @@
 import React from 'react';
+import Link from 'next/link';
 
 const Footer = () => {
   return (
@@ -16,9 +17,9 @@ const Footer = () => {
         <div className="flex gap-16 md:gap-32">
           <div className="flex flex-col gap-4">
             <h5 className="text-[12px] uppercase tracking-widest mb-2 font-normal">Explore</h5>
-            <a href="#" className="text-[13px] font-light opacity-60 hover:opacity-100 transition-opacity">Home</a>
-            <a href="#" className="text-[13px] font-light opacity-60 hover:opacity-100 transition-opacity">Collections</a>
-            <a href="#" className="text-[13px] font-light opacity-60 hover:opacity-100 transition-opacity">New Arrivals</a>
+            <Link href="/" className="text-[13px] font-light opacity-60 hover:opacity-100 transition-opacity">Home</Link>
+            <Link href="#" className="text-[13px] font-light opacity-60 hover:opacity-100 transition-opacity">Collections</Link>
+            <Link href="#" className="text-[13px] font-light opacity-60 hover:opacity-100 transition-opacity">New Arrivals</Link>
           </div>
           
           <div className="flex flex-col gap-4">

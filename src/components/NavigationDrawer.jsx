@@ -1,3 +1,4 @@
+'use client';
 import React, { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { X, User, Phone, Store, Plus, Truck, HelpCircle, AlertCircle, Instagram, Facebook } from 'lucide-react';

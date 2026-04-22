@@ -1,4 +1,5 @@
 import React from 'react';
+import Link from 'next/link';
 
 const categories = [
   { id: 1, title: '3 Piece', image: '/assets/D2 (05).jpg', link: '/category/3-piece' },
@@ -33,7 +34,7 @@ const Categories = () => {
             </div>
 
             {/* Link Placeholder */}
-            <a href={cat.link} className="absolute inset-0 z-10" aria-label={`View ${cat.title}`}></a>
+            <Link href={cat.link} className="absolute inset-0 z-10" aria-label={`View ${cat.title}`}></Link>
           </div>
         ))}
       </div>

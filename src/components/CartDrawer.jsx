@@ -1,3 +1,4 @@
+'use client';
 import React, { useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { X, Minus, Plus, ShoppingBag, ArrowRight } from 'lucide-react';

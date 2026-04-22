@@ -1,5 +1,6 @@
+'use client';
 import React, { useState, useEffect } from 'react';
-import { Link } from 'react-router-dom';
+import Link from 'next/link';
 import { Search, ShoppingBag, Menu, X } from 'lucide-react';
 import { useDispatch, useSelector } from 'react-redux';
 import { motion, AnimatePresence } from 'framer-motion';
@@ -48,7 +49,7 @@ const Navbar = () => {
         </button>
 
         {/* Logo (Center) */}
-        <Link to="/" className="flex-[2] lg:flex-1 text-center text-lg md:text-2xl font-extralight tracking-[0.2em] md:tracking-[0.5em] uppercase whitespace-nowrap">
+        <Link href="/" className="flex-[2] lg:flex-1 text-center text-lg md:text-2xl font-extralight tracking-[0.2em] md:tracking-[0.5em] uppercase whitespace-nowrap">
           ZANORA
         </Link>
 
@@ -117,7 +118,7 @@ const Navbar = () => {
                     {filteredProducts.map(product => (
                       <Link 
                         key={product.id} 
-                        to={`/product/${product.id}`}
+                        href={`/product/${product.id}`}
                         onClick={() => {
                           setIsSearchOpen(false);
                           setSearchQuery('');
