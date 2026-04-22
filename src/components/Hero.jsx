@@ -5,12 +5,10 @@ const Hero = () => {
   return (
     <section className="relative h-screen w-full flex items-center justify-center overflow-hidden">
       {/* Background Image */}
-      <div 
-        className="absolute inset-0 bg-cover bg-center bg-no-repeat"
-        style={{ 
-          backgroundImage: "url('/assets/D1 (01).jpg')",
-          filter: "brightness(0.95)"
-        }}
+      <img 
+        src="/assets/D1 (01).jpg" 
+        alt="ZANORA Luxury Fashion Premium Collection"
+        className="absolute inset-0 w-full h-full object-cover brightness-[0.95]"
       />
       
       {/* Overlay for text readability if needed */}

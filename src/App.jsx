@@ -1,6 +1,7 @@
 import React, { useEffect } from 'react';
 import { BrowserRouter as Router, Routes, Route, useLocation } from 'react-router-dom';
 import { Provider } from 'react-redux';
+import { HelmetProvider } from 'react-helmet-async';
 import { store } from './store';
 import Navbar from './components/Navbar';
 import Footer from './components/Footer';
@@ -20,23 +21,25 @@ function ScrollToTop() {
 
 function App() {
   return (
-    <Provider store={store}>
-      <Router>
-        <ScrollToTop />
-        <div className="bg-zanora-cream min-h-screen selection:bg-zanora-beige selection:text-zanora-black">
-          <Navbar />
-          <CartDrawer />
-          
-          <Routes>
-            <Route path="/" element={<Home />} />
-            <Route path="/product/:id" element={<ProductDetail />} />
-            <Route path="/category/:slug" element={<Home />} />
-          </Routes>
+    <HelmetProvider>
+      <Provider store={store}>
+        <Router>
+          <ScrollToTop />
+          <div className="bg-zanora-cream min-h-screen selection:bg-zanora-beige selection:text-zanora-black">
+            <Navbar />
+            <CartDrawer />
+            
+            <Routes>
+              <Route path="/" element={<Home />} />
+              <Route path="/product/:id" element={<ProductDetail />} />
+              <Route path="/category/:slug" element={<Home />} />
+            </Routes>
 
-          <Footer />
-        </div>
-      </Router>
-    </Provider>
+            <Footer />
+          </div>
+        </Router>
+      </Provider>
+    </HelmetProvider>
   );
 }
 

@@ -5,6 +5,7 @@ import { useDispatch } from 'react-redux';
 import { useParams, Link } from 'react-router-dom';
 import { addItem, toggleCart } from '../store/cartSlice';
 import { products } from '../data/products';
+import SEO from '../components/SEO';
 
 const ProductDetail = () => {
   const { id } = useParams();
@@ -80,6 +81,13 @@ const ProductDetail = () => {
 
   return (
     <div className="pt-32 pb-20 px-6 md:px-20 bg-zanora-cream min-h-screen">
+      <SEO 
+        title={product.name}
+        description={product.description}
+        image={product.images[0]}
+        url={`/product/${product.id}`}
+        keywords={`${product.name}, ZANORA, ${product.details.fabric}, Pakistani Suits`}
+      />
       <div className="max-w-[1440px] mx-auto flex flex-col lg:flex-row gap-12 relative">
         
         {/* LEFT: GALLERY & ZOOM AREA */}

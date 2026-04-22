@@ -15,10 +15,11 @@ const Categories = () => {
             key={cat.id} 
             className="group relative h-full overflow-hidden cursor-pointer"
           >
-            {/* Background Image with Zoom */}
-            <div 
-              className="absolute inset-0 bg-cover bg-center transition-transform duration-700 ease-out group-hover:scale-105"
-              style={{ backgroundImage: `url('${cat.image}')` }}
+            {/* Image with Zoom */}
+            <img 
+              src={cat.image} 
+              alt={`ZANORA ${cat.title} Collection`}
+              className="absolute inset-0 w-full h-full object-cover transition-transform duration-700 ease-out group-hover:scale-105"
             />
             
             {/* Overlay */}
