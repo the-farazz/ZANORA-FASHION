@@ -1,6 +1,7 @@
 import React from 'react';
 import { products } from '../../../data/products';
 import Link from 'next/link';
+import Image from 'next/image';
 
 const categoryContent = {
   '3-piece': {
@@ -68,10 +69,12 @@ export default function CategoryPage({ params }) {
           {filteredProducts.map((product) => (
             <Link href={`/products/${product.slug}`} key={product.id} className="group cursor-pointer">
               <div className="aspect-[3/4] overflow-hidden mb-4 relative">
-                <img 
+                <Image 
                   src={product.images[0]} 
                   alt={`${product.name} for women in Pakistan`}
-                  className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110" 
+                  fill
+                  sizes="(max-width: 768px) 50vw, 25vw"
+                  className="object-cover transition-transform duration-700 group-hover:scale-110" 
                 />
                 {product.availability === 'Coming Soon' && (
                   <div className="absolute top-4 left-4 bg-white/90 px-3 py-1 text-[8px] uppercase tracking-widest font-bold">

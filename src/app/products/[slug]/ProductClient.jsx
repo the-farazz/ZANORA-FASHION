@@ -4,6 +4,7 @@ import { motion, AnimatePresence } from 'framer-motion';
 import { Minus, Plus, Heart, Facebook, Instagram, Phone, X, ChevronLeft, ChevronRight, Maximize2, ArrowRight } from 'lucide-react';
 import { useDispatch } from 'react-redux';
 import Link from 'next/link';
+import Image from 'next/image';
 import { addItem, toggleCart } from '../../../store/cartSlice';
 
 const ProductClient = ({ product }) => {
@@ -88,11 +89,17 @@ const ProductClient = ({ product }) => {
               <button 
                 key={idx}
                 onClick={() => setSelectedImage(idx)}
-                className={`w-20 md:w-full aspect-[3/4] flex-shrink-0 overflow-hidden border transition-all ${
+                className={`w-20 md:w-full aspect-[3/4] flex-shrink-0 overflow-hidden border relative transition-all ${
                   selectedImage === idx ? 'border-zanora-black' : 'border-transparent opacity-60 hover:opacity-100'
                 }`}
               >
-                <img src={img} alt={`${product.name} View ${idx + 1} for women in Pakistan`} className="w-full h-full object-cover" />
+                <Image 
+                  src={img} 
+                  alt={`${product.name} View ${idx + 1} for women in Pakistan`} 
+                  fill
+                  sizes="80px"
+                  className="object-cover" 
+                />
               </button>
             ))}
           </div>
@@ -111,16 +118,23 @@ const ProductClient = ({ product }) => {
               className="aspect-[3/4] relative overflow-hidden bg-white cursor-crosshair border border-black/5"
             >
               <AnimatePresence mode="wait">
-                <motion.img
+                <motion.div
                   key={selectedImage}
-                  src={product.images[selectedImage]}
                   initial={{ opacity: 0 }}
                   animate={{ opacity: 1 }}
                   exit={{ opacity: 0 }}
                   transition={{ duration: 0.3 }}
-                  alt={`${product.name} for women in Pakistan`}
-                  className="w-full h-full object-cover pointer-events-none"
-                />
+                  className="w-full h-full relative"
+                >
+                  <Image
+                    src={product.images[selectedImage]}
+                    alt={`${product.name} for women in Pakistan`}
+                    fill
+                    priority
+                    sizes="(max-width: 1024px) 100vw, 60vw"
+                    className="object-cover pointer-events-none"
+                  />
+                </motion.div>
               </AnimatePresence>
               
               <button 

@@ -1,6 +1,7 @@
 'use client';
 import React, { useState, useEffect } from 'react';
 import Link from 'next/link';
+import Image from 'next/image';
 import { Search, ShoppingBag, Menu, X } from 'lucide-react';
 import { useDispatch, useSelector } from 'react-redux';
 import { motion, AnimatePresence } from 'framer-motion';
@@ -126,10 +127,12 @@ const Navbar = () => {
                         className="group flex flex-col gap-3 animate-in fade-in slide-in-from-bottom-4 duration-500"
                       >
                         <div className="aspect-[3/4] overflow-hidden bg-zanora-cream relative">
-                          <img 
+                          <Image 
                             src={product.images[0]} 
                             alt={`${product.name} for women in Pakistan`}
-                            className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700" 
+                            fill
+                            sizes="150px"
+                            className="object-cover group-hover:scale-110 transition-transform duration-700" 
                           />
                         </div>
                         <div className="space-y-1 text-center">
