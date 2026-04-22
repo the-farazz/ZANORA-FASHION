@@ -48,8 +48,8 @@ const Navbar = () => {
         </button>
 
         {/* Logo (Center) */}
-        <Link to="/" className="flex-[2] lg:flex-1 text-center text-xl md:text-2xl font-extralight tracking-[0.5em] uppercase">
-          Z A N O R A
+        <Link to="/" className="flex-[2] lg:flex-1 text-center text-lg md:text-2xl font-extralight tracking-[0.2em] md:tracking-[0.5em] uppercase whitespace-nowrap">
+          ZANORA
         </Link>
 
         {/* Actions (Right) */}
