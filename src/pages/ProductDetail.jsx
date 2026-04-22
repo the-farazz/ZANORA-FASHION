@@ -147,7 +147,7 @@ const ProductDetail = () => {
                 <Maximize2 size={18} strokeWidth={1} />
               </button>
               
-              {/* Zoom Lens (The moving box) */}
+              {/* Zoom Lens / Magnifying Glass */}
               {zoomLevel.show && (
                 <div 
                   style={{
@@ -156,8 +156,25 @@ const ProductDetail = () => {
                     left: `${zoomLevel.x}px`,
                     top: `${zoomLevel.y}px`,
                   }}
-                  className="absolute border border-black/20 bg-white/10 pointer-events-none z-50 backdrop-blur-[1px]"
-                />
+                  className="absolute border-2 border-white shadow-2xl pointer-events-none z-50 overflow-hidden rounded-sm"
+                >
+                  {/* Internal zoom for mobile (Magnifying glass effect) */}
+                  <img
+                    src={product.images[selectedImage]}
+                    alt="Zoom"
+                    style={{
+                      position: 'absolute',
+                      width: `${400}%`,
+                      height: `${400}%`,
+                      left: `-${zoomLevel.px * 3.5}%`,
+                      top: `-${zoomLevel.py * 3.5}%`,
+                      maxWidth: 'none',
+                    }}
+                    className="lg:hidden block"
+                  />
+                  {/* Subtle overlay for lens on desktop */}
+                  <div className="hidden lg:block w-full h-full bg-white/10 backdrop-blur-[1px]" />
+                </div>
               )}
             </div>
 
@@ -168,7 +185,7 @@ const ProductDetail = () => {
                   initial={{ opacity: 0 }}
                   animate={{ opacity: 1 }}
                   exit={{ opacity: 0 }}
-                  className="absolute left-0 lg:left-[calc(100%+3rem)] top-0 w-full h-full bg-zanora-cream z-[1000] border border-black/10 pointer-events-none shadow-2xl overflow-hidden hidden lg:block"
+                  className="absolute left-[calc(100%+3rem)] top-0 w-full h-full bg-zanora-cream z-[1000] border border-black/10 pointer-events-none shadow-2xl overflow-hidden hidden lg:block"
                 >
                   <img
                     src={product.images[selectedImage]}
