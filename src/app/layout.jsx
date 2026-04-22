@@ -14,6 +14,9 @@ export const metadata = {
   keywords: ['ZANORA', 'Pakistani Fashion', 'Luxury Lawn', 'Unstitched Collection', 'Ready to Wear', 'Designer Suits'],
   authors: [{ name: 'ZANORA' }],
   metadataBase: new URL('https://www.zanorafashion.com'),
+  verification: {
+    google: 'your-google-verification-code', // Placeholder for User to fill
+  },
   openGraph: {
     type: 'website',
     url: 'https://www.zanorafashion.com/',
@@ -37,6 +40,18 @@ export default function RootLayout({ children }) {
         <link rel="icon" type="image/png" href="/assets/fav-icon.png" />
       </head>
       <body className="bg-zanora-cream selection:bg-zanora-beige selection:text-zanora-black">
+        {/* Google Analytics */}
+        <script async src="https://www.googletagmanager.com/gtag/js?id=G-XXXXXXXXXX"></script>
+        <script
+          dangerouslySetInnerHTML={{
+            __html: `
+              window.dataLayer = window.dataLayer || [];
+              function gtag(){dataLayer.push(arguments);}
+              gtag('js', new Date());
+              gtag('config', 'G-XXXXXXXXXX');
+            `,
+          }}
+        />
         <StoreProvider>
           <Navbar />
           <CartDrawer />
