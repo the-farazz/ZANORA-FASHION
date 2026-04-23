@@ -27,7 +27,7 @@ export const metadata = {
     },
   },
   verification: {
-    google: 'your-google-verification-code', // Placeholder for User to fill
+    google: 'lWD9CWvGm6ar6VfFFpVcdHI4nswx7vpjcefqIGxTe94',
   },
   openGraph: {
     type: 'website',
