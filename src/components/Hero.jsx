@@ -26,7 +26,7 @@ const Hero = () => {
           transition={{ duration: 1, delay: 0.2 }}
           className="text-xs md:text-sm uppercase tracking-[0.6em] mb-4 drop-shadow-sm"
         >
-          New Collection 2026
+          New Collection 2026!
         </motion.p>
         
         <motion.h1 
