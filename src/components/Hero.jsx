@@ -1,14 +1,18 @@
+'use client';
 import React from 'react';
 import { motion } from 'framer-motion';
+import Image from 'next/image';
 
 const Hero = () => {
   return (
     <section className="relative h-screen w-full flex items-center justify-center overflow-hidden">
       {/* Background Image */}
-      <img 
-        src="/assets/D1 (01).jpg" 
+      <Image 
+        src="/assets/classic-silk-evening-wear-pakistan-2.jpg" 
         alt="ZANORA Luxury Fashion Premium Collection"
-        className="absolute inset-0 w-full h-full object-cover brightness-[0.95]"
+        fill
+        priority
+        className="object-cover brightness-[0.95]"
       />
       
       {/* Overlay for text readability if needed */}
@@ -22,7 +26,7 @@ const Hero = () => {
           transition={{ duration: 1, delay: 0.2 }}
           className="text-xs md:text-sm uppercase tracking-[0.6em] mb-4 drop-shadow-sm"
         >
-          New Collection 2026.
+          New Collection 2026!
         </motion.p>
         
         <motion.h1 
