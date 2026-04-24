@@ -1,7 +1,17 @@
-import React from 'react';
+'use client';
+import React, { useState } from 'react';
 import Link from 'next/link';
 
 const Footer = () => {
+  const [email, setEmail] = useState('');
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    if (!email.trim()) return;
+    alert('Thank you for subscribing!');
+    setEmail('');
+  };
+
   return (
     <footer className="py-20 px-6 md:px-20 bg-zanora-cream border-t border-black/5">
       <div className="flex flex-col md:flex-row justify-between items-start gap-12">
@@ -33,14 +43,17 @@ const Footer = () => {
         {/* Newsletter */}
         <div className="flex-1 w-full md:max-w-xs">
           <h5 className="text-[12px] uppercase tracking-widest mb-4 font-normal">Newsletter</h5>
-          <div className="flex border-b border-black/20 pb-2">
+          <form onSubmit={handleSubmit} className="flex border-b border-black/20 pb-2">
             <input 
               type="email" 
               placeholder="Email Address" 
+              value={email}
+              onChange={(e) => setEmail(e.target.value)}
+              required
               className="bg-transparent text-[13px] w-full focus:outline-none font-light"
             />
-            <button className="text-[11px] uppercase tracking-widest opacity-60 hover:opacity-100">Join</button>
-          </div>
+            <button type="submit" className="text-[11px] uppercase tracking-widest opacity-60 hover:opacity-100">Join</button>
+          </form>
         </div>
       </div>
 

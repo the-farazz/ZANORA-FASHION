@@ -24,6 +24,11 @@ const CheckoutModal = ({ isOpen, onClose, onConfirm, subtotal, items }) => {
     const newErrors = {};
     if (!formData.name.trim()) newErrors.name = 'Name is required';
     if (!formData.phone.trim()) newErrors.phone = 'Phone number is required';
+    if (!formData.email.trim()) {
+      newErrors.email = 'Email is required';
+    } else if (!/\S+@\S+\.\S+/.test(formData.email)) {
+      newErrors.email = 'Please enter a valid email';
+    }
     if (!formData.address.trim()) newErrors.address = 'Shipping address is required';
     
     setErrors(newErrors);
@@ -116,10 +121,10 @@ const CheckoutModal = ({ isOpen, onClose, onConfirm, subtotal, items }) => {
                   {errors.phone && <p className="text-[10px] text-red-500 uppercase tracking-widest">{errors.phone}</p>}
                 </div>
 
-                {/* Email (Optional) */}
+                {/* Email */}
                 <div className="space-y-1.5">
                   <label className="text-[11px] uppercase tracking-widest font-bold opacity-60 flex items-center gap-2">
-                    <Mail size={12} /> Email (Optional)
+                    <Mail size={12} /> Email Address *
                   </label>
                   <input
                     type="email"
@@ -127,8 +132,11 @@ const CheckoutModal = ({ isOpen, onClose, onConfirm, subtotal, items }) => {
                     value={formData.email}
                     onChange={handleChange}
                     placeholder="e.g. hello@zanora.com"
-                    className="w-full bg-white border border-black/10 h-12 px-4 text-sm focus:outline-none focus:border-zanora-brown transition-all"
+                    className={`w-full bg-white border h-12 px-4 text-sm focus:outline-none transition-all ${
+                      errors.email ? 'border-red-400' : 'border-black/10 focus:border-zanora-brown'
+                    }`}
                   />
+                  {errors.email && <p className="text-[10px] text-red-500 uppercase tracking-widest">{errors.email}</p>}
                 </div>
 
                 {/* Address */}
