@@ -53,14 +53,14 @@ export default function RootLayout({ children }) {
       </head>
       <body className="bg-zanora-cream selection:bg-zanora-beige selection:text-zanora-black">
         {/* Google Analytics */}
-        <script async src="https://www.googletagmanager.com/gtag/js?id=G-XXXXXXXXXX"></script>
+        <script async src="https://www.googletagmanager.com/gtag/js?id=G-SSQM0J3VPL"></script>
         <script
           dangerouslySetInnerHTML={{
             __html: `
               window.dataLayer = window.dataLayer || [];
               function gtag(){dataLayer.push(arguments);}
               gtag('js', new Date());
-              gtag('config', 'G-XXXXXXXXXX');
+              gtag('config', 'G-SSQM0J3VPL');
             `,
           }}
         />
