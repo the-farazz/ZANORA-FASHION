@@ -1,7 +1,15 @@
 import { createSlice } from '@reduxjs/toolkit';
 
+const getInitialItems = () => {
+  if (typeof window !== 'undefined') {
+    const saved = localStorage.getItem('zanora_cart');
+    return saved ? JSON.parse(saved) : [];
+  }
+  return [];
+};
+
 const initialState = {
-  items: JSON.parse(localStorage.getItem('zanora_cart')) || [],
+  items: getInitialItems(),
   isOpen: false,
 };
 
@@ -27,14 +35,18 @@ const cartSlice = createSlice({
           quantity,
         });
       }
-      localStorage.setItem('zanora_cart', JSON.stringify(state.items));
+      if (typeof window !== 'undefined') {
+        localStorage.setItem('zanora_cart', JSON.stringify(state.items));
+      }
     },
     removeItem: (state, action) => {
       const { id, size } = action.payload;
       state.items = state.items.filter(
         (item) => !(item.id === id && item.size === size)
       );
-      localStorage.setItem('zanora_cart', JSON.stringify(state.items));
+      if (typeof window !== 'undefined') {
+        localStorage.setItem('zanora_cart', JSON.stringify(state.items));
+      }
     },
     updateQuantity: (state, action) => {
       const { id, size, quantity } = action.payload;
@@ -44,14 +56,18 @@ const cartSlice = createSlice({
       if (item) {
         item.quantity = Math.max(1, quantity);
       }
-      localStorage.setItem('zanora_cart', JSON.stringify(state.items));
+      if (typeof window !== 'undefined') {
+        localStorage.setItem('zanora_cart', JSON.stringify(state.items));
+      }
     },
     toggleCart: (state) => {
       state.isOpen = !state.isOpen;
     },
     clearCart: (state) => {
       state.items = [];
-      localStorage.removeItem('zanora_cart');
+      if (typeof window !== 'undefined') {
+        localStorage.removeItem('zanora_cart');
+      }
     }
   },
 });

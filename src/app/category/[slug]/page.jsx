@@ -20,10 +20,16 @@ const categoryContent = {
 
 export async function generateMetadata({ params }) {
   const { slug } = params;
-  const content = categoryContent[slug] || { title: 'Collections' };
+  const content = categoryContent[slug] || { 
+    title: 'Collections', 
+    description: 'Explore ZANORA’s premier collections of Pakistani fashion, featuring luxury unstitched and ready-to-wear dresses.' 
+  };
+  
+  const description = content.description || 'Explore ZANORA’s premier collections.';
+  
   return {
     title: `${content.title} | ZANORA`,
-    description: `Buy the best ${content.title} online in Pakistan. Explore our premium collection at ZANORA. ${content.description.substring(0, 100)}...`,
+    description: `Buy the best ${content.title} online in Pakistan. Explore our premium collection at ZANORA. ${description.substring(0, 100)}...`,
     alternates: {
       canonical: `/category/${slug}`,
     },

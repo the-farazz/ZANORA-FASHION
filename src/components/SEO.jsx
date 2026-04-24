@@ -28,7 +28,7 @@ const SEO = ({ title, description, keywords, image, url }) => {
       <meta name="twitter:description" content={description || defaultDescription} />
       <meta name="twitter:image" content={ogImage.startsWith('http') ? ogImage : `${siteUrl}${ogImage}`} />
       
-      {/* Canonical Link */l[ks-0 wsk]}
+      {/* Canonical Link */}
       <link rel="canonical" href={url ? `${siteUrl}${url}` : siteUrl} />
     </Helmet>
   );
