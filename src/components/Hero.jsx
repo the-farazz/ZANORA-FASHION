@@ -1,3 +1,4 @@
+'use client';
 import React from 'react';
 import { motion } from 'framer-motion';
 import Image from 'next/image';
@@ -7,7 +8,7 @@ const Hero = () => {
     <section className="relative h-screen w-full flex items-center justify-center overflow-hidden">
       {/* Background Image */}
       <Image 
-        src="/assets/D1 (01).jpg" 
+        src="/assets/classic-silk-evening-wear-pakistan-2.jpg" 
         alt="ZANORA Luxury Fashion Premium Collection"
         fill
         priority
@@ -25,7 +26,7 @@ const Hero = () => {
           transition={{ duration: 1, delay: 0.2 }}
           className="text-xs md:text-sm uppercase tracking-[0.6em] mb-4 drop-shadow-sm"
         >
-          New Collection 2026
+          New Collection 2026.
         </motion.p>
         
         <motion.h1 

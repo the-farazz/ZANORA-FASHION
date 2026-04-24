@@ -1,10 +1,11 @@
 import React from 'react';
 import Link from 'next/link';
+import Image from 'next/image';
 
 const categories = [
-  { id: 1, title: '3 Piece', image: '/assets/D2 (05).jpg', link: '/category/3-piece' },
-  { id: 2, title: '2 Piece', image: '/assets/D3 (05).jpg', link: '/category/2-piece' },
-  { id: 3, title: '1 Piece', image: '/assets/D4 (01).jpg', link: '/category/1-piece' },
+  { id: 1, title: '3 Piece', image: '/assets/evening-drape-linen-pakistan-4.jpg', link: '/category/3-piece' },
+  { id: 2, title: '2 Piece', image: '/assets/spring-lawn-collection-pakistan-5.jpg', link: '/category/2-piece' },
+  { id: 3, title: '1 Piece', image: '/assets/summer-breeze-voile-pakistan-1.jpg', link: '/category/1-piece' },
 ];
 
 const Categories = () => {
@@ -17,10 +18,12 @@ const Categories = () => {
             className="group relative h-full overflow-hidden cursor-pointer"
           >
             {/* Image with Zoom */}
-            <img 
+            <Image 
               src={cat.image} 
               alt={`ZANORA ${cat.title} Collection`}
-              className="absolute inset-0 w-full h-full object-cover transition-transform duration-700 ease-out group-hover:scale-105"
+              fill
+              sizes="(max-width: 768px) 100vw, 33vw"
+              className="object-cover transition-transform duration-700 ease-out group-hover:scale-105"
             />
             
             {/* Overlay */}
