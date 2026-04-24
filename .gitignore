@@ -28,3 +28,8 @@ yarn-error.log*
 
 # Vite
 .vite/
+
+# Next.js
+.next/
+out/
+.turbo/

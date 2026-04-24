@@ -1,14 +1,17 @@
 import React from 'react';
 import { motion } from 'framer-motion';
+import Image from 'next/image';
 
 const Hero = () => {
   return (
     <section className="relative h-screen w-full flex items-center justify-center overflow-hidden">
       {/* Background Image */}
-      <img 
+      <Image 
         src="/assets/D1 (01).jpg" 
         alt="ZANORA Luxury Fashion Premium Collection"
-        className="absolute inset-0 w-full h-full object-cover brightness-[0.95]"
+        fill
+        priority
+        className="object-cover brightness-[0.95]"
       />
       
       {/* Overlay for text readability if needed */}
