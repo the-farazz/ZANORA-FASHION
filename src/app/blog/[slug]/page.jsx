@@ -7,7 +7,7 @@ import { products } from '../../../data/products';
 import { ArrowLeft, Share2 } from 'lucide-react';
 
 export async function generateMetadata({ params }) {
-  const { slug } = params;
+  const { slug } = await params;
   const blog = blogs.find((b) => b.slug === slug);
 
   if (!blog) return { title: 'Post Not Found' };
@@ -27,8 +27,8 @@ export async function generateStaticParams() {
   }));
 }
 
-export default function BlogPostPage({ params }) {
-  const { slug } = params;
+export default async function BlogPostPage({ params }) {
+  const { slug } = await params;
   const blog = blogs.find((b) => b.slug === slug);
 
   if (!blog) {

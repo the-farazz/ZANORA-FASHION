@@ -8,7 +8,7 @@ const Hero = () => {
     <section className="relative h-screen w-full flex items-center justify-center overflow-hidden">
       {/* Background Image */}
       <Image 
-        src="/assets/classic-silk-evening-wear-pakistan-2.jpg" 
+        src="/assets/ZanoraBanner.png" 
         alt="ZANORA Luxury Fashion Premium Collection"
         fill
         priority

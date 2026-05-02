@@ -19,7 +19,7 @@ const categoryContent = {
 };
 
 export async function generateMetadata({ params }) {
-  const { slug } = params;
+  const { slug } = await params;
   const content = categoryContent[slug] || { 
     title: 'Collections', 
     description: 'Explore ZANORA’s premier collections of Pakistani fashion, featuring luxury unstitched and ready-to-wear dresses.' 
@@ -44,8 +44,8 @@ export async function generateStaticParams() {
   ];
 }
 
-export default function CategoryPage({ params }) {
-  const { slug } = params;
+export default async function CategoryPage({ params }) {
+  const { slug } = await params;
   const content = categoryContent[slug];
   
   // Simple filtering logic (for demo, we'll just show some products or all)
