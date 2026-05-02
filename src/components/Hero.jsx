@@ -5,14 +5,14 @@ import Image from 'next/image';
 
 const Hero = () => {
   return (
-    <section className="relative h-screen w-full flex items-center justify-center overflow-hidden">
+    <section className="relative h-screen w-full flex items-end justify-center overflow-hidden">
       {/* Desktop Background */}
       <Image 
         src="/assets/ZanoraBanner.png" 
         alt="ZANORA Luxury Fashion Premium Collection"
         fill
         priority
-        className="hidden md:block object-cover brightness-[0.95]"
+        className="hidden md:block object-cover"
       />
       
       {/* Mobile Background */}
@@ -21,31 +21,27 @@ const Hero = () => {
         alt="ZANORA Luxury Fashion Premium Collection"
         fill
         priority
-        className="block md:hidden object-cover brightness-[0.95]"
+        className="block md:hidden object-cover"
       />
       
-      {/* Overlay for text readability if needed */}
+      {/* Subtle overlay for contrast if needed */}
       <div className="absolute inset-0 bg-black/5" />
 
       {/* Content */}
-      <div className="relative z-10 text-center text-white p-6">
-        <motion.p 
+      <div className="relative z-10 text-center text-white p-6 pb-24 md:pb-20">
+        <motion.div 
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 1, delay: 0.2 }}
-          className="text-xs md:text-sm uppercase tracking-[0.6em] mb-4 drop-shadow-sm"
+          transition={{ duration: 1, delay: 0.5 }}
+          className="md:hidden space-y-4 mb-8"
         >
-          New Collection 2024!
-        </motion.p>
-        
-        <motion.h1 
-          initial={{ opacity: 0, y: 30 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 1, delay: 0.4 }}
-          className="text-3xl md:text-5xl lg:text-6xl font-extralight tracking-[0.2em] mb-8 drop-shadow-md text-white"
-        >
-          Effortless. Everyday. ZANORA.
-        </motion.h1>
+          <p className="text-[10px] uppercase tracking-[0.6em] drop-shadow-sm">
+            New Collection 2026
+          </p>
+          <h1 className="text-2xl font-extralight tracking-[0.2em] drop-shadow-md">
+            EFFORTLESS ELEGANCE
+          </h1>
+        </motion.div>
 
         <motion.div
           initial={{ opacity: 0 }}
@@ -53,8 +49,8 @@ const Hero = () => {
           transition={{ duration: 1, delay: 0.8 }}
         >
           <a 
-            href="#collections" 
-            className="inline-block px-10 py-4 border border-white text-white text-[12px] uppercase tracking-widest hover:bg-white hover:text-zanora-black transition-all duration-300 backdrop-blur-[2px]"
+            href="#featured" 
+            className="inline-block px-12 py-4 bg-white/10 backdrop-blur-md border border-white/30 text-white text-[11px] uppercase tracking-[0.3em] hover:bg-white hover:text-zanora-black transition-all duration-500"
           >
             Shop Now
           </a>
