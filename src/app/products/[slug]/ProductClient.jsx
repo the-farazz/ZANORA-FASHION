@@ -92,7 +92,7 @@ const ProductClient = ({ product }) => {
                   alt={`${product.name} View ${idx + 1} for women in Pakistan`} 
                   fill
                   sizes="80px"
-                  className="object-cover" 
+                  className="object-contain" 
                 />
               </button>
             ))}
@@ -126,7 +126,7 @@ const ProductClient = ({ product }) => {
                     fill
                     priority
                     sizes="(max-width: 1024px) 100vw, 60vw"
-                    className="object-cover pointer-events-none"
+                    className="object-contain pointer-events-none"
                   />
                 </motion.div>
               </AnimatePresence>
@@ -213,7 +213,13 @@ const ProductClient = ({ product }) => {
               <h1 className="text-xl md:text-2xl font-light tracking-widest text-zanora-black uppercase">
                 {product.name}
               </h1>
-              <p className="text-lg font-normal text-zanora-brown">{product.price}</p>
+              <div className="flex items-center gap-4">
+                <p className="text-lg font-normal text-zanora-brown">{product.price}</p>
+                {product.oldPrice && (
+                  <p className="text-sm font-light text-black/40 line-through decoration-zanora-brown/40">{product.oldPrice}</p>
+                )}
+                <span className="text-[10px] bg-green-50 text-green-700 px-2 py-1 uppercase tracking-tighter font-bold">Free Home Delivery</span>
+              </div>
               <div className="text-[11px] uppercase tracking-widest opacity-40 space-y-1">
                 <p>SKU: {product.sku}</p>
                 {product.barcode && <p>Barcode: {product.barcode}</p>}
@@ -229,7 +235,7 @@ const ProductClient = ({ product }) => {
                 </p>
               </div>
 
-              <div className="grid grid-cols-2 gap-y-4 text-[12px] tracking-widest uppercase">
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-y-6 md:gap-y-4 text-[12px] tracking-widest uppercase">
                 <div>
                   <p className="font-bold mb-1">Shirt</p>
                   <p className="font-light opacity-60">{product.details.shirt}</p>
@@ -260,10 +266,7 @@ const ProductClient = ({ product }) => {
               )}
             </div>
 
-            <div className="space-y-6 border-t border-black/5 pt-6">
-              <div className="flex flex-col gap-4">
-                <p className="text-[11px] uppercase tracking-widest font-bold">Standard Size: <span className="opacity-60 font-light">Unstitched</span></p>
-              </div>
+
 
               <div className="flex flex-col sm:flex-row gap-4 items-end sm:items-center">
                 <div className="space-y-3 flex-1 w-full">
@@ -309,23 +312,10 @@ const ProductClient = ({ product }) => {
                 </a>
                 <Phone size={16} strokeWidth={1.5} className="cursor-pointer opacity-60 hover:opacity-100" />
               </div>
-              <p className="text-[11px] uppercase tracking-widest opacity-40 italic">
-                * images for illustrative purpose
-              </p>
             </div>
           </div>
 
-          {/* INTERNAL LINKING: Categories -> Products */}
-          <div className="pt-10 mt-10 border-t border-black/5">
-            <Link 
-              href={`/category/${product.category}`}
-              className="text-[11px] uppercase tracking-[0.2em] font-bold flex items-center gap-2 group hover:text-zanora-brown transition-colors"
-            >
-              Explore more {product.category.replace('-', ' ')} collections
-              <ArrowRight size={14} className="transition-transform group-hover:translate-x-1" />
-            </Link>
-          </div>
-        </div>
+
       </div>
 
       {/* SIZE GUIDE MODAL REMOVED */}

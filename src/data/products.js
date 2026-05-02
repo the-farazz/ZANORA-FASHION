@@ -5,6 +5,7 @@ export const products = [
     name: 'Zanora Digital Printed Bana Dora Lawn 3 Piece unstitched Suit',
     category: '3-piece',
     price: 'Rs. 3,399',
+    oldPrice: 'Rs. 3,999',
     sku: '0001',
     barcode: 'ZAKI0001',
     availability: 'In Stock',
