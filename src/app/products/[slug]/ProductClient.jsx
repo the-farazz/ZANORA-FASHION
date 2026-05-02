@@ -9,10 +9,8 @@ import { addItem, toggleCart } from '../../../store/cartSlice';
 
 const ProductClient = ({ product }) => {
   const [selectedImage, setSelectedImage] = useState(0);
-  const [selectedSize, setSelectedSize] = useState(null);
   const [quantity, setQuantity] = useState(1);
   const [zoomLevel, setZoomLevel] = useState({ x: 0, y: 0, show: false });
-  const [isSizeGuideOpen, setIsSizeGuideOpen] = useState(false);
   const [isFullZoomOpen, setIsFullZoomOpen] = useState(false);
   const containerRef = useRef(null);
   const dispatch = useDispatch();
@@ -57,11 +55,7 @@ const ProductClient = ({ product }) => {
   };
 
   const handleAddToCart = () => {
-    if (!selectedSize) {
-      alert('Please select a size first');
-      return;
-    }
-    dispatch(addItem({ product, size: selectedSize, quantity }));
+    dispatch(addItem({ product, size: 'Unstitched', quantity }));
     dispatch(toggleCart());
   };
 
@@ -222,6 +216,7 @@ const ProductClient = ({ product }) => {
               <p className="text-lg font-normal text-zanora-brown">{product.price}</p>
               <div className="text-[11px] uppercase tracking-widest opacity-40 space-y-1">
                 <p>SKU: {product.sku}</p>
+                {product.barcode && <p>Barcode: {product.barcode}</p>}
                 <p>Availability: <span className="text-green-600 font-medium">{product.availability}</span></p>
               </div>
             </div>
@@ -240,38 +235,34 @@ const ProductClient = ({ product }) => {
                   <p className="font-light opacity-60">{product.details.shirt}</p>
                 </div>
                 <div>
+                  <p className="font-bold mb-1">Dupatta</p>
+                  <p className="font-light opacity-60">{product.details.dupatta}</p>
+                </div>
+                <div>
                   <p className="font-bold mb-1">Trouser</p>
                   <p className="font-light opacity-60">{product.details.trouser}</p>
                 </div>
+                <div>
+                  <p className="font-bold mb-1">Size</p>
+                  <p className="font-light opacity-60">{product.details.size || 'Standard Unstitched'}</p>
+                </div>
               </div>
+
+              {product.included && (
+                <div className="space-y-2 border-t border-black/5 pt-6">
+                  <h4 className="text-[12px] uppercase tracking-widest font-bold">What's Included</h4>
+                  <ul className="text-[13px] font-light leading-relaxed opacity-70 list-disc list-inside">
+                    {product.included.map((item, idx) => (
+                      <li key={idx}>{item}</li>
+                    ))}
+                  </ul>
+                </div>
+              )}
             </div>
 
             <div className="space-y-6 border-t border-black/5 pt-6">
               <div className="flex flex-col gap-4">
-                <div className="flex justify-between items-center">
-                  <p className="text-[11px] uppercase tracking-widest font-bold">Size: {selectedSize || 'Select'}</p>
-                  <button 
-                    onClick={() => setIsSizeGuideOpen(true)}
-                    className="text-[10px] uppercase tracking-widest border-b border-black/40 hover:opacity-100 opacity-60 transition-opacity"
-                  >
-                    Size Guide
-                  </button>
-                </div>
-                <div className="flex gap-3">
-                  {product.sizes.map((size) => (
-                    <button
-                      key={size}
-                      onClick={() => setSelectedSize(size)}
-                      className={`px-6 py-2 text-[12px] border transition-all ${
-                        selectedSize === size 
-                          ? 'bg-zanora-black text-white border-zanora-black' 
-                          : 'border-black/10 hover:border-black/40'
-                      }`}
-                    >
-                      {size}
-                    </button>
-                  ))}
-                </div>
+                <p className="text-[11px] uppercase tracking-widest font-bold">Standard Size: <span className="opacity-60 font-light">Unstitched</span></p>
               </div>
 
               <div className="flex flex-col sm:flex-row gap-4 items-end sm:items-center">
@@ -337,61 +328,7 @@ const ProductClient = ({ product }) => {
         </div>
       </div>
 
-      {/* SIZE GUIDE MODAL */}
-      <AnimatePresence>
-        {isSizeGuideOpen && (
-          <div className="fixed inset-0 z-[3000] flex items-center justify-center p-6 bg-black/40 backdrop-blur-sm">
-            <motion.div 
-              initial={{ opacity: 0, scale: 0.95 }}
-              animate={{ opacity: 1, scale: 1 }}
-              exit={{ opacity: 0, scale: 0.95 }}
-              className="relative bg-zanora-cream p-8 md:p-12 max-w-2xl w-full shadow-2xl overflow-hidden"
-            >
-              <button 
-                onClick={() => setIsSizeGuideOpen(false)}
-                className="absolute top-6 right-6 hover:opacity-60 z-10"
-              >
-                <X size={24} strokeWidth={1} />
-              </button>
-              
-              <h2 className="text-xl tracking-widest-plus uppercase mb-8 border-b border-black/5 pb-4">Size Guide</h2>
-              
-              <div className="overflow-x-auto">
-                <table className="w-full text-center text-[12px] tracking-widest">
-                  <thead>
-                    <tr className="border-b border-black/10 uppercase">
-                      <th className="py-4 font-bold">Size</th>
-                      <th className="py-4 font-bold">Chest</th>
-                      <th className="py-4 font-bold">Waist</th>
-                      <th className="py-4 font-bold">Length</th>
-                    </tr>
-                  </thead>
-                  <tbody className="font-light opacity-80">
-                    <tr className="border-b border-black/5">
-                      <td className="py-4 font-bold uppercase">Small</td>
-                      <td className="py-4">19.0"</td>
-                      <td className="py-4">17.0"</td>
-                      <td className="py-4">38.0"</td>
-                    </tr>
-                    <tr className="border-b border-black/5">
-                      <td className="py-4 font-bold uppercase">Medium</td>
-                      <td className="py-4">20.5"</td>
-                      <td className="py-4">18.5"</td>
-                      <td className="py-4">39.0"</td>
-                    </tr>
-                    <tr className="border-b border-black/5">
-                      <td className="py-4 font-bold uppercase">Large</td>
-                      <td className="py-4">22.5"</td>
-                      <td className="py-4">20.5"</td>
-                      <td className="py-4">40.0"</td>
-                    </tr>
-                  </tbody>
-                </table>
-              </div>
-            </motion.div>
-          </div>
-        )}
-      </AnimatePresence>
+      {/* SIZE GUIDE MODAL REMOVED */}
 
       {/* FULL SCREEN ZOOM MODAL */}
       <AnimatePresence>
