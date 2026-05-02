@@ -6,13 +6,22 @@ import Image from 'next/image';
 const Hero = () => {
   return (
     <section className="relative h-screen w-full flex items-center justify-center overflow-hidden">
-      {/* Background Image */}
+      {/* Desktop Background */}
       <Image 
         src="/assets/ZanoraBanner.png" 
         alt="ZANORA Luxury Fashion Premium Collection"
         fill
         priority
-        className="object-cover brightness-[0.95]"
+        className="hidden md:block object-cover brightness-[0.95]"
+      />
+      
+      {/* Mobile Background */}
+      <Image 
+        src="/assets/zanoraMobile.png" 
+        alt="ZANORA Luxury Fashion Premium Collection"
+        fill
+        priority
+        className="block md:hidden object-cover brightness-[0.95]"
       />
       
       {/* Overlay for text readability if needed */}
