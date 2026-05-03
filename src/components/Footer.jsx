@@ -17,7 +17,9 @@ const Footer = () => {
       <div className="flex flex-col md:flex-row justify-between items-start gap-12">
         {/* Brand Info */}
         <div className="flex-1">
-          <h2 className="text-xl tracking-widest-plus uppercase mb-4">Z A N O R A</h2>
+          <Link href="/">
+            <h2 className="text-xl tracking-widest-plus uppercase mb-4 cursor-pointer">Z A N O R A</h2>
+          </Link>
           <p className="max-w-xs text-[13px] font-light leading-relaxed opacity-60">
             Effortless style for the modern woman. Curated elegance for your everyday life.
           </p>

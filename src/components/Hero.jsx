@@ -49,7 +49,7 @@ const Hero = () => {
           transition={{ duration: 1, delay: 0.8 }}
         >
           <a 
-            href="#featured" 
+            href="/category/3-piece" 
             className="inline-block px-12 py-4 bg-white/10 backdrop-blur-md border border-white/30 text-white text-[11px] uppercase tracking-[0.3em] hover:bg-white hover:text-zanora-black transition-all duration-500"
           >
             Shop Now

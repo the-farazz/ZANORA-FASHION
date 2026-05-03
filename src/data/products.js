@@ -174,4 +174,92 @@ export const products = [
       '/assets/Zaki Fabric 11-15/e3.png',
     ]
   },
+  {
+    id: '7',
+    slug: 'zanora-tana-dora-digital-print-lawn-unstitched-a',
+    name: 'Zanora Tana Dora Digital Print Lawn 3 Piece Unstitched Suit - A',
+    category: '3-piece',
+    price: 'Rs. 3,499',
+    oldPrice: 'Rs. 4,200',
+    sku: 'ZN-4001',
+    barcode: 'ZNL-4001',
+    availability: 'In Stock',
+    description: "ZANORA's Unstitched Tana Dora Digital Print Three-Piece Suit showcases vibrant colors and modern patterns on premium lawn fabric. Designed for everyday elegance, this outfit offers a perfect blend of comfort and style. The matching dupatta and sleek trouser complete the look, making it ideal for casual wear, office styling, and family gatherings. Premium Quality Lawn Fabric. Soft & Breathable Material. Vibrant Digital Prints. Perfect For Summer Season.",
+    details: {
+      fabric: 'Tana Dora Lawn',
+      shirt: 'Premium Tana Dora Lawn Shirt (2.5 Meter)',
+      dupatta: 'Digital Printed Tana Dora Lawn Dupatta (2.25 Meter)',
+      trouser: 'Plain Dyed Lawn Trouser (2.25 Meter)',
+      size: 'Standard Unstitched'
+    },
+    included: [
+      '1 x Premium Tana Dora Lawn Shirt (2.5m)',
+      '1 x Digital Printed Dupatta (2.25m)',
+      '1 x Plain Dyed Trouser (2.25m)'
+    ],
+    images: [
+      '/assets/zainycollection/a1.png',
+      '/assets/zainycollection/a2.png',
+      '/assets/zainycollection/a3.png',
+    ]
+  },
+  {
+    id: '8',
+    slug: 'zanora-tana-dora-digital-print-lawn-unstitched-b',
+    name: 'Zanora Tana Dora Digital Print Lawn 3 Piece Unstitched Suit - B',
+    category: '3-piece',
+    price: 'Rs. 3,499',
+    oldPrice: 'Rs. 4,200',
+    sku: 'ZN-4002',
+    barcode: 'ZNL-4002',
+    availability: 'In Stock',
+    description: "ZANORA's Unstitched Tana Dora Digital Print Three-Piece Suit showcases vibrant colors and modern patterns on premium lawn fabric. Designed for everyday elegance, this outfit offers a perfect blend of comfort and style. The matching dupatta and sleek trouser complete the look, making it ideal for casual wear, office styling, and family gatherings. Premium Quality Lawn Fabric. Soft & Breathable Material. Vibrant Digital Prints. Perfect For Summer Season.",
+    details: {
+      fabric: 'Tana Dora Lawn',
+      shirt: 'Premium Tana Dora Lawn Shirt (2.5 Meter)',
+      dupatta: 'Digital Printed Tana Dora Lawn Dupatta (2.25 Meter)',
+      trouser: 'Plain Dyed Lawn Trouser (2.25 Meter)',
+      size: 'Standard Unstitched'
+    },
+    included: [
+      '1 x Premium Tana Dora Lawn Shirt (2.5m)',
+      '1 x Digital Printed Dupatta (2.25m)',
+      '1 x Plain Dyed Trouser (2.25m)'
+    ],
+    images: [
+      '/assets/zainycollection/b1.png',
+      '/assets/zainycollection/b2.png',
+      '/assets/zainycollection/b3.png',
+      '/assets/zainycollection/b4.png',
+    ]
+  },
+  {
+    id: '9',
+    slug: 'zanora-tana-dora-digital-print-lawn-unstitched-c',
+    name: 'Zanora Tana Dora Digital Print Lawn 3 Piece Unstitched Suit - C',
+    category: '3-piece',
+    price: 'Rs. 3,499',
+    oldPrice: 'Rs. 4,200',
+    sku: 'ZN-4003',
+    barcode: 'ZNL-4003',
+    availability: 'In Stock',
+    description: "ZANORA's Unstitched Tana Dora Digital Print Three-Piece Suit showcases vibrant colors and modern patterns on premium lawn fabric. Designed for everyday elegance, this outfit offers a perfect blend of comfort and style. The matching dupatta and sleek trouser complete the look, making it ideal for casual wear, office styling, and family gatherings. Premium Quality Lawn Fabric. Soft & Breathable Material. Vibrant Digital Prints. Perfect For Summer Season.",
+    details: {
+      fabric: 'Tana Dora Lawn',
+      shirt: 'Premium Tana Dora Lawn Shirt (2.5 Meter)',
+      dupatta: 'Digital Printed Tana Dora Lawn Dupatta (2.25 Meter)',
+      trouser: 'Plain Dyed Lawn Trouser (2.25 Meter)',
+      size: 'Standard Unstitched'
+    },
+    included: [
+      '1 x Premium Tana Dora Lawn Shirt (2.5m)',
+      '1 x Digital Printed Dupatta (2.25m)',
+      '1 x Plain Dyed Trouser (2.25m)'
+    ],
+    images: [
+      '/assets/zainycollection/c1.png',
+      '/assets/zainycollection/c2.png',
+      '/assets/zainycollection/c3.png',
+    ]
+  },
 ];
