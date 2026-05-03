@@ -23,14 +23,19 @@ const FeaturedProducts = () => {
                 alt={`${product.name} for women in Pakistan`}
                 fill
                 sizes="(max-width: 768px) 50vw, 25vw"
-                className="object-cover transition-transform duration-700 group-hover:scale-110"
+                className="object-contain transition-transform duration-700 group-hover:scale-110"
               />
               <div className="absolute top-4 right-4 bg-white/80 py-1 px-3 text-[10px] tracking-widest uppercase backdrop-blur-sm">
                 New
               </div>
             </div>
             <h4 className="text-[13px] tracking-widest uppercase mb-1">{product.name}</h4>
-            <p className="text-[14px] text-zanora-brown font-light">{product.price}</p>
+            <div className="flex items-center gap-2">
+              <p className="text-[14px] text-zanora-brown font-semibold">{product.price}</p>
+              {product.oldPrice && (
+                <p className="text-[12px] text-black/40 line-through opacity-50">{product.oldPrice}</p>
+              )}
+            </div>
           </Link>
         ))}
       </div>

@@ -23,7 +23,7 @@ const SEOContent = () => {
 
           <div className="space-y-6">
             <p className="text-[14px] leading-relaxed font-light opacity-80">
-              In a rapidly evolving fashion landscape, ZANORA stands out by prioritizing minimalist aesthetics and superior textile quality. We understand the modern Pakistani woman—ambitious, graceful, and always on the move. That is why our ready-to-wear and unstitched collections are crafted to offer versatile styling options that transition perfectly from a professional environment to an evening gala.
+              In a rapidly evolving fashion landscape, ZANORA stands out by prioritizing minimalist aesthetics and superior textile quality. We understand the modern Pakistani woman, ambitious, graceful, and always on the move. That is why our ready-to-wear and unstitched collections are crafted to offer versatile styling options that transition perfectly from a professional environment to an evening gala.
             </p>
             <p className="text-[14px] leading-relaxed font-light opacity-80">
               Shopping with ZANORA is more than just a transaction; it is an entry into a world of curated luxury. We offer nationwide shipping and dedicated customer support to ensure your journey to <strong className="font-normal text-zanora-brown">buy clothes online in Pakistan</strong> is as smooth as the silk in our garments. Discover the ZANORA difference today and elevate your wardrobe with pieces that speak of timeless beauty.
