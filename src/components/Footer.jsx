@@ -23,20 +23,27 @@ const Footer = () => {
           </p>
         </div>
 
-        {/* Quick Links */}
-        <div className="flex gap-16 md:gap-32">
+        {/* Navigation Links */}
+        <div className="flex flex-wrap gap-x-16 md:gap-x-32 gap-y-12">
           <div className="flex flex-col gap-4">
             <h5 className="text-[12px] uppercase tracking-widest mb-2 font-normal">Explore</h5>
             <Link href="/" className="text-[13px] font-light opacity-60 hover:opacity-100 transition-opacity">Home</Link>
-            <Link href="#" className="text-[13px] font-light opacity-60 hover:opacity-100 transition-opacity">Collections</Link>
-            <Link href="#" className="text-[13px] font-light opacity-60 hover:opacity-100 transition-opacity">New Arrivals</Link>
+            <Link href="/category/3-piece" className="text-[13px] font-light opacity-60 hover:opacity-100 transition-opacity">Collections</Link>
+            <Link href="/support" className="text-[13px] font-light opacity-60 hover:opacity-100 transition-opacity">Support Hub</Link>
           </div>
           
           <div className="flex flex-col gap-4">
             <h5 className="text-[12px] uppercase tracking-widest mb-2 font-normal">Help</h5>
-            <a href="#" className="text-[13px] font-light opacity-60 hover:opacity-100 transition-opacity">Contact</a>
-            <a href="#" className="text-[13px] font-light opacity-60 hover:opacity-100 transition-opacity">Shipping</a>
-            <a href="#" className="text-[13px] font-light opacity-60 hover:opacity-100 transition-opacity">Returns</a>
+            <Link href="/contact" className="text-[13px] font-light opacity-60 hover:opacity-100 transition-opacity">Contact Us</Link>
+            <Link href="/support/shipping" className="text-[13px] font-light opacity-60 hover:opacity-100 transition-opacity">Shipping Policy</Link>
+            <Link href="/support/returns" className="text-[13px] font-light opacity-60 hover:opacity-100 transition-opacity">Return Policy</Link>
+            <Link href="/support/faq" className="text-[13px] font-light opacity-60 hover:opacity-100 transition-opacity">FAQs</Link>
+          </div>
+
+          <div className="flex flex-col gap-4">
+            <h5 className="text-[12px] uppercase tracking-widest mb-2 font-normal">Legal</h5>
+            <Link href="/support/privacy" className="text-[13px] font-light opacity-60 hover:opacity-100 transition-opacity">Privacy Policy</Link>
+            <Link href="/support/terms" className="text-[13px] font-light opacity-60 hover:opacity-100 transition-opacity">Terms & Conditions</Link>
           </div>
         </div>
 

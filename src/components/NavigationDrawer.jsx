@@ -3,6 +3,8 @@ import React, { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { X, User, Phone, Store, Plus, Truck, HelpCircle, AlertCircle, Instagram, Facebook } from 'lucide-react';
 
+import Link from 'next/link';
+
 const NavigationDrawer = ({ isOpen, onClose }) => {
   const [activeTab, setActiveTab] = useState('WOMEN');
   const [showComingSoon, setShowComingSoon] = useState(false);
@@ -163,18 +165,26 @@ const NavigationDrawer = ({ isOpen, onClose }) => {
 
             {/* Bottom Links */}
             <div className="p-8 bg-white/50 border-t border-black/5 space-y-5">
-              <div className="flex items-center gap-4 group cursor-pointer">
+              <Link 
+                href="https://wa.me/923112264613?text=Hi,%20I%20want%20to%20track%20my%20order.%20My%20Order%20ID%20is:%20" 
+                target="_blank"
+                className="flex items-center gap-4 group cursor-pointer"
+              >
                 <div className="w-8 h-8 rounded-full bg-zanora-brown/10 flex items-center justify-center group-hover:bg-zanora-brown group-hover:text-white transition-colors">
                   <Truck size={14} strokeWidth={1} />
                 </div>
                 <span className="text-[10px] uppercase tracking-widest opacity-60 group-hover:opacity-100 font-bold transition-opacity">Track Your Order</span>
-              </div>
-              <div className="flex items-center gap-4 group cursor-pointer pb-2">
+              </Link>
+              <Link 
+                href="/support" 
+                onClick={onClose}
+                className="flex items-center gap-4 group cursor-pointer pb-2"
+              >
                 <div className="w-8 h-8 rounded-full bg-zanora-brown/10 flex items-center justify-center group-hover:bg-zanora-brown group-hover:text-white transition-colors">
                   <HelpCircle size={14} strokeWidth={1} />
                 </div>
                 <span className="text-[10px] uppercase tracking-widest opacity-60 group-hover:opacity-100 font-bold transition-opacity">Help & Support</span>
-              </div>
+              </Link>
               
               <div className="flex gap-4 pt-4 border-t border-black/5 items-center justify-center">
                 <a href="https://www.facebook.com/profile.php?id=61567419680748" target="_blank" rel="noopener noreferrer" className="opacity-40 hover:opacity-100 transition-opacity">
